@@ -1,0 +1,16 @@
+{
+  "parent": "spiderqueen_hungrycraft:item/spider_hook_held",
+  "textures": {
+    "layer0": "spiderqueen_hungrycraft:item/diamond_spider_hook",
+    "layer1": "spiderqueen_hungrycraft:item/spider_hook_head"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "spiderqueen_hungrycraft:cast": 1.0
+      },
+      "model": "spiderqueen_hungrycraft:item/diamond_spider_hook_cast"
+    }
+  ]
+}
+

@@ -1,0 +1,15 @@
+{
+  "required_level": 30,
+  "soul_cost": 2000,
+  "prerequisites": [],
+  "icon": "minecraft:ender_eye",
+  "name": "skill.spiderqueen_hungrycraft.queen_sniff",
+  "description": "skill.spiderqueen_hungrycraft.queen_sniff.desc",
+  "input_hint": "sniff",
+  "required_for_legend": true,
+  "layout": {
+    "anchor_level": 30,
+    "side": "right",
+    "lane": 1
+  }
+}

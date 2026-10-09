@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y": { "model": "spiderqueen_hungrycraft:block/spider_bed", "x": 90 },
+    "axis=x": { "model": "spiderqueen_hungrycraft:block/spider_bed", "y": 90 },
+    "axis=z": { "model": "spiderqueen_hungrycraft:block/spider_bed" }
+  }
+}

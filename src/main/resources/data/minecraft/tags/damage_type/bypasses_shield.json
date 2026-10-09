@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "spiderqueen_hungrycraft:stomach_link",
+    "spiderqueen_hungrycraft:stomach_swallowed",
+    "spiderqueen_hungrycraft:self_slaughter"
+  ]
+}

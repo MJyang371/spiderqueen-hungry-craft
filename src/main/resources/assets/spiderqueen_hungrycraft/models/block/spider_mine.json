@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "spiderqueen_hungrycraft:block/spider_mine",
+    "down": "spiderqueen_hungrycraft:block/spider_mine",
+    "up": "spiderqueen_hungrycraft:block/spider_mine_top",
+    "north": "spiderqueen_hungrycraft:block/spider_mine",
+    "east": "spiderqueen_hungrycraft:block/spider_mine",
+    "south": "spiderqueen_hungrycraft:block/spider_mine",
+    "west": "spiderqueen_hungrycraft:block/spider_mine"
+  }
+}

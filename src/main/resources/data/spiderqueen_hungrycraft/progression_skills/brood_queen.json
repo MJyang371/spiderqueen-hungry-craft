@@ -1,0 +1,14 @@
+{
+  "required_level": 15,
+  "soul_cost": 1000,
+  "prerequisites": [],
+  "icon": "spiderqueen_hungrycraft:queen_scepter",
+  "name": "skill.spiderqueen_hungrycraft.brood_queen",
+  "description": "skill.spiderqueen_hungrycraft.brood_queen.desc",
+  "required_for_legend": true,
+  "layout": {
+    "anchor_level": 15,
+    "side": "right",
+    "lane": 1
+  }
+}

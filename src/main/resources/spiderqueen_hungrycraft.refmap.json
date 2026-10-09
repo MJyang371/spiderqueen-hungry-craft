@@ -1,0 +1,54 @@
+{
+  "mappings": {
+    "spiderqueenhungrycraft/mixin/EntityWebAffinityMixin": {
+      "Lnet/minecraft/world/entity/Entity;makeStuckInBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/Vec3;)V": "Lnet/minecraft/world/entity/Entity;m_7601_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/Vec3;)V"
+    },
+    "spiderqueenhungrycraft/mixin/BeastCameraMixin": {
+      "Lnet/minecraft/client/Camera;setup(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V": "Lnet/minecraft/client/Camera;m_90575_(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V",
+      "Lnet/minecraft/client/Camera;getMaxZoom(D)D": "Lnet/minecraft/client/Camera;m_90566_(D)D"
+    },
+    "spiderqueenhungrycraft/mixin/BeastHurtSoundMixin": {
+      "Lnet/minecraft/world/entity/LivingEntity;playHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)V": "Lnet/minecraft/world/entity/LivingEntity;m_6677_(Lnet/minecraft/world/damagesource/DamageSource;)V"
+    },
+    "spiderqueenhungrycraft/mixin/BeastPushImmunityMixin": {
+      "Lnet/minecraft/world/entity/LivingEntity;isPushable()Z": "Lnet/minecraft/world/entity/LivingEntity;m_6094_()Z"
+    },
+    "spiderqueenhungrycraft/mixin/ExplosionBeastImpulseMixin": {
+      "Lnet/minecraft/world/level/Explosion;explode()V": "Lnet/minecraft/world/level/Explosion;m_46061_()V",
+      "Lnet/minecraft/world/item/enchantment/ProtectionEnchantment;getExplosionKnockbackAfterDampener(Lnet/minecraft/world/entity/LivingEntity;D)D": "Lnet/minecraft/world/item/enchantment/ProtectionEnchantment;m_45135_(Lnet/minecraft/world/entity/LivingEntity;D)D"
+    },
+    "spiderqueenhungrycraft/mixin/BeastHurtCameraMixin": {
+      "Lnet/minecraft/client/renderer/GameRenderer;bobHurt(Lcom/mojang/blaze3d/vertex/PoseStack;F)V": "Lnet/minecraft/client/renderer/GameRenderer;m_109117_(Lcom/mojang/blaze3d/vertex/PoseStack;F)V"
+    },
+    "spiderqueenhungrycraft/mixin/BeastJumpSuppressionMixin": {
+      "Lnet/minecraft/world/entity/player/Player;jumpFromGround()V": "Lnet/minecraft/world/entity/player/Player;m_6135_()V"
+    }
+  },
+  "data": {
+    "searge": {
+      "spiderqueenhungrycraft/mixin/EntityWebAffinityMixin": {
+        "Lnet/minecraft/world/entity/Entity;makeStuckInBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/Vec3;)V": "Lnet/minecraft/world/entity/Entity;m_7601_(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/phys/Vec3;)V"
+      },
+      "spiderqueenhungrycraft/mixin/BeastCameraMixin": {
+        "Lnet/minecraft/client/Camera;setup(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V": "Lnet/minecraft/client/Camera;m_90575_(Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/world/entity/Entity;ZZF)V",
+        "Lnet/minecraft/client/Camera;getMaxZoom(D)D": "Lnet/minecraft/client/Camera;m_90566_(D)D"
+      },
+      "spiderqueenhungrycraft/mixin/BeastHurtSoundMixin": {
+        "Lnet/minecraft/world/entity/LivingEntity;playHurtSound(Lnet/minecraft/world/damagesource/DamageSource;)V": "Lnet/minecraft/world/entity/LivingEntity;m_6677_(Lnet/minecraft/world/damagesource/DamageSource;)V"
+      },
+      "spiderqueenhungrycraft/mixin/BeastPushImmunityMixin": {
+        "Lnet/minecraft/world/entity/LivingEntity;isPushable()Z": "Lnet/minecraft/world/entity/LivingEntity;m_6094_()Z"
+      },
+      "spiderqueenhungrycraft/mixin/ExplosionBeastImpulseMixin": {
+        "Lnet/minecraft/world/level/Explosion;explode()V": "Lnet/minecraft/world/level/Explosion;m_46061_()V",
+        "Lnet/minecraft/world/item/enchantment/ProtectionEnchantment;getExplosionKnockbackAfterDampener(Lnet/minecraft/world/entity/LivingEntity;D)D": "Lnet/minecraft/world/item/enchantment/ProtectionEnchantment;m_45135_(Lnet/minecraft/world/entity/LivingEntity;D)D"
+      },
+      "spiderqueenhungrycraft/mixin/BeastHurtCameraMixin": {
+        "Lnet/minecraft/client/renderer/GameRenderer;bobHurt(Lcom/mojang/blaze3d/vertex/PoseStack;F)V": "Lnet/minecraft/client/renderer/GameRenderer;m_109117_(Lcom/mojang/blaze3d/vertex/PoseStack;F)V"
+      },
+      "spiderqueenhungrycraft/mixin/BeastJumpSuppressionMixin": {
+        "Lnet/minecraft/world/entity/player/Player;jumpFromGround()V": "Lnet/minecraft/world/entity/player/Player;m_6135_()V"
+      }
+    }
+  }
+}

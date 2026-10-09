@@ -1,0 +1,126 @@
+{
+  "armor_bonus": 30.0,
+
+  "bite": {
+    "width": 3.0,
+    "height": 2.0,
+    "depth": 2.0
+  },
+
+  "camera": {
+    "bite_shake": {
+      "duration_ticks": 8,
+      "pitch_degrees": 3.5,
+      "yaw_degrees": 1.2,
+      "roll_degrees": 0.55,
+      "fov_degrees": 3.0
+    }
+  },
+
+  "jump": {
+    "max_charge_ticks": 20,
+    "minimum_stomp_charge": 0.35,
+    "min_vertical_velocity": 0.55,
+    "max_vertical_velocity": 1.05,
+    "forward_velocity": 0.22
+  },
+
+  "stomp": {
+    "damage": 15.0,
+    "radius": 4.0,
+    "vertical_range": 2.5,
+    "knock_up": 0.9,
+    "knock_outward": 0.35,
+
+    "camera": {
+      "duration_ticks": 10,
+      "pitch_degrees": 5.0,
+      "yaw_degrees": 1.5,
+      "roll_degrees": 0.7,
+      "fov_degrees": 4.0
+    }
+  },
+
+  "charge": {
+    "speed": 0.85,
+    "food_interval_ticks": 20,
+    "food_cost_per_interval": 1,
+    "damage": 20.0,
+    "knock_up": 0.8,
+    "knock_forward": 1.0,
+    "max_turn_degrees_per_tick": 3.0,
+    "hard_impact_explosion_power": 4.0
+  },
+
+  "block_breaking": {
+    "transform_clearance": {
+      "max_hardness": 3.0,
+      "drop_blocks": false,
+      "allow_block_entities": false,
+
+      "allow_blocks": [],
+      "allow_tags": [
+        "minecraft:logs",
+        "minecraft:planks",
+        "minecraft:leaves",
+        "spiderqueen_hungrycraft:beast_fragile"
+      ],
+
+      "protected_blocks": [],
+      "protected_tags": [
+        "spiderqueen_hungrycraft:beast_protected"
+      ]
+    },
+
+    "body_crush": {
+      "max_hardness": 0.2,
+      "drop_blocks": false,
+      "allow_block_entities": false,
+
+      "allow_blocks": [],
+      "allow_tags": [
+        "minecraft:logs",
+        "minecraft:leaves",
+        "spiderqueen_hungrycraft:beast_fragile"
+      ],
+
+      "protected_blocks": [],
+      "protected_tags": [
+        "spiderqueen_hungrycraft:beast_protected"
+      ]
+    },
+
+    "stomp": {
+      "max_hardness": 1.0,
+      "drop_blocks": false,
+      "allow_block_entities": false,
+
+      "allow_blocks": [],
+      "allow_tags": [
+        "minecraft:dirt",
+        "minecraft:logs",
+        "minecraft:leaves",
+        "spiderqueen_hungrycraft:beast_fragile"
+      ],
+
+      "protected_blocks": [],
+      "protected_tags": [
+        "spiderqueen_hungrycraft:beast_protected"
+      ]
+    },
+
+    "charge": {
+      "hardness_reference": "minecraft:obsidian",
+      "drop_blocks": true,
+      "allow_block_entities": true,
+
+      "allow_blocks": [],
+      "allow_tags": [],
+
+      "protected_blocks": [],
+      "protected_tags": [
+        "spiderqueen_hungrycraft:beast_protected"
+      ]
+    }
+  }
+}

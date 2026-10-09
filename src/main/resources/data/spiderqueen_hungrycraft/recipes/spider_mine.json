@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EEE",
+    "ETE",
+    "EEE"
+  ],
+  "key": {
+    "E": {
+      "item": "spiderqueen_hungrycraft:spider_egg"
+    },
+    "T": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "item": "spiderqueen_hungrycraft:spider_mine",
+    "count": 1
+  }
+}

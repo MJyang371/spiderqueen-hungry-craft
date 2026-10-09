@@ -1,0 +1,6 @@
+{
+  "max_level": 200,
+  "base_cost": 250,
+  "levels_per_tier": 20,
+  "tier_increment": 50
+}

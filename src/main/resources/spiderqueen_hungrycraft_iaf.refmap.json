@@ -1,0 +1,43 @@
+{
+  "_comment": [
+    "The reference map of the optional Ice and Fire hooks of Spider Queen: Hungry Craft (Necromancy IV round 4/5).",
+    "It is written by hand on purpose: the only hook of this mod that names a VANILLA member is",
+    "EntityDragonBaseRiderMixin, which injects into Entity#getControllingPassenger - a method that Ice and Fire only",
+    "overrides, so its name in a published jar is the SRG name m_6688_ while a development workspace calls it",
+    "getControllingPassenger. Mixin can only bridge that with a reference map, and the reference map of the main",
+    "configuration cannot carry it: that file is generated from the Minecraft mappings, which do not know the class of",
+    "another mod. So the entries are written here, keyed exactly the way Mixin resolves the member - the official name",
+    "and descriptor on the left, the SRG name on the right - and the file is declared by",
+    "spiderqueen_hungrycraft_iaf.mixins.json and by IceAndFireMixinPlugin#getRefMapperConfig.",
+    "",
+    "ROUND 5 - why the descriptor is part of the key, and why there are two owner forms:",
+    "  * the @Inject of the rider hook now names the full descriptor",
+    "    (getControllingPassenger()Lnet/minecraft/world/entity/LivingEntity;) because a BARE name gives Mixin nothing to",
+    "    look up in this map: the translation of a member name is keyed by the complete reference, so a bare name stayed",
+    "    official, the search ran against the SRG named class and found nothing",
+    "    (InvalidInjectionException: could not find any targets matching 'getControllingPassenger'),",
+    "  * the same member is listed twice, once with the class Ice and Fire overrides it in (EntityDragonBase) and once",
+    "    with the class that declares it in the game (Entity). Mixin resolves the owner of an overridden member either",
+    "    way depending on how it found the target, both classes carry m_6688_, and an entry that is never asked for costs",
+    "    nothing - so both forms are stated and neither has to be guessed at run time.",
+    "The two other hooks of that configuration (EnumDragonTexturesMixin and EntityDragonBaseEyesMixin) are declared",
+    "remap = false and target methods of Ice and Fire itself, whose names are identical in both worlds: they need no",
+    "entry and deliberately have none.",
+    "For a DEVELOPMENT run with Ice and Fire installed, gradle/mixin-refmap.srg carries the same member the other way",
+    "round (m_6688_ -> getControllingPassenger), which is what mixin.env.remapRefMap asks for."
+  ],
+  "mappings": {
+    "spiderqueenhungrycraft/mixin/compat/iaf/EntityDragonBaseRiderMixin": {
+      "Lcom/github/alexthe666/iceandfire/entity/EntityDragonBase;getControllingPassenger()Lnet/minecraft/world/entity/LivingEntity;": "Lcom/github/alexthe666/iceandfire/entity/EntityDragonBase;m_6688_()Lnet/minecraft/world/entity/LivingEntity;",
+      "Lnet/minecraft/world/entity/Entity;getControllingPassenger()Lnet/minecraft/world/entity/LivingEntity;": "Lnet/minecraft/world/entity/Entity;m_6688_()Lnet/minecraft/world/entity/LivingEntity;"
+    }
+  },
+  "data": {
+    "searge": {
+      "spiderqueenhungrycraft/mixin/compat/iaf/EntityDragonBaseRiderMixin": {
+        "Lcom/github/alexthe666/iceandfire/entity/EntityDragonBase;getControllingPassenger()Lnet/minecraft/world/entity/LivingEntity;": "Lcom/github/alexthe666/iceandfire/entity/EntityDragonBase;m_6688_()Lnet/minecraft/world/entity/LivingEntity;",
+        "Lnet/minecraft/world/entity/Entity;getControllingPassenger()Lnet/minecraft/world/entity/LivingEntity;": "Lnet/minecraft/world/entity/Entity;m_6688_()Lnet/minecraft/world/entity/LivingEntity;"
+      }
+    }
+  }
+}

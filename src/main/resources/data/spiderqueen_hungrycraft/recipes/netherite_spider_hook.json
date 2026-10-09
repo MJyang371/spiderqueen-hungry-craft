@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "NNN",
+    "NHN",
+    "NNN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "H": {
+      "item": "spiderqueen_hungrycraft:diamond_spider_hook"
+    }
+  },
+  "result": {
+    "item": "spiderqueen_hungrycraft:netherite_spider_hook",
+    "count": 1
+  }
+}

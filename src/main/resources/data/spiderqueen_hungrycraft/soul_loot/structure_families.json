@@ -1,0 +1,226 @@
+{
+  "families": [
+    {
+      "family": "village",
+      "soul": "spiderqueen_hungrycraft:benevolent_soul",
+      "structures": [
+        "minecraft:village_plains",
+        "minecraft:village_desert",
+        "minecraft:village_savanna",
+        "minecraft:village_snowy",
+        "minecraft:village_taiga",
+        "repurposed_structures:village_badlands",
+        "repurposed_structures:village_bamboo",
+        "repurposed_structures:village_birch",
+        "repurposed_structures:village_cherry",
+        "repurposed_structures:village_crimson",
+        "repurposed_structures:village_dark_forest",
+        "repurposed_structures:village_giant_taiga",
+        "repurposed_structures:village_jungle",
+        "repurposed_structures:village_mountains",
+        "repurposed_structures:village_mushroom",
+        "repurposed_structures:village_oak",
+        "repurposed_structures:village_ocean",
+        "repurposed_structures:village_swamp",
+        "repurposed_structures:village_warped"
+      ],
+      "structure_tags": ["minecraft:village"]
+    },
+    {
+      "family": "dungeon",
+      "soul": "spiderqueen_hungrycraft:benevolent_soul",
+      "structures": [
+        "betterdungeons:small_dungeon",
+        "betterdungeons:spider_dungeon",
+        "betterdungeons:skeleton_dungeon",
+        "betterdungeons:zombie_dungeon",
+        "betterdungeons:small_nether_dungeon"
+      ]
+    },
+    {
+      "family": "mineshaft",
+      "soul": "spiderqueen_hungrycraft:benevolent_soul",
+      "structures": [
+        "minecraft:mineshaft",
+        "minecraft:mineshaft_mesa",
+        "repurposed_structures:mineshaft_birch",
+        "repurposed_structures:mineshaft_crimson",
+        "repurposed_structures:mineshaft_dark_forest",
+        "repurposed_structures:mineshaft_desert",
+        "repurposed_structures:mineshaft_end",
+        "repurposed_structures:mineshaft_icy",
+        "repurposed_structures:mineshaft_jungle",
+        "repurposed_structures:mineshaft_nether",
+        "repurposed_structures:mineshaft_ocean",
+        "repurposed_structures:mineshaft_savanna",
+        "repurposed_structures:mineshaft_stone",
+        "repurposed_structures:mineshaft_swamp",
+        "repurposed_structures:mineshaft_taiga",
+        "repurposed_structures:mineshaft_warped",
+        "bettermineshafts:mineshaft_acacia",
+        "bettermineshafts:mineshaft_desert",
+        "bettermineshafts:mineshaft_dripstone",
+        "bettermineshafts:mineshaft_ice",
+        "bettermineshafts:mineshaft_jungle",
+        "bettermineshafts:mineshaft_lush",
+        "bettermineshafts:mineshaft_mesa",
+        "bettermineshafts:mineshaft_mushroom",
+        "bettermineshafts:mineshaft_oak",
+        "bettermineshafts:mineshaft_overgrown",
+        "bettermineshafts:mineshaft_red_desert",
+        "bettermineshafts:mineshaft_spruce",
+        "bettermineshafts:mineshaft_spruce_snowy"
+      ],
+      "structure_tags": ["minecraft:mineshaft"]
+    },
+    {
+      "family": "shipwreck",
+      "soul": "spiderqueen_hungrycraft:nameless_traveler_soul",
+      "structures": [
+        "minecraft:shipwreck",
+        "minecraft:shipwreck_beached",
+        "repurposed_structures:shipwreck_crimson",
+        "repurposed_structures:shipwreck_end",
+        "repurposed_structures:shipwreck_nether_bricks",
+        "repurposed_structures:shipwreck_warped"
+      ],
+      "structure_tags": ["minecraft:shipwreck"]
+    },
+    {
+      "family": "buried_treasure",
+      "soul": "spiderqueen_hungrycraft:thief_soul",
+      "structures": ["minecraft:buried_treasure"]
+    },
+    {
+      "family": "desert_pyramid",
+      "soul": "spiderqueen_hungrycraft:thief_soul",
+      "structures": [
+        "minecraft:desert_pyramid",
+        "betterdeserttemples:desert_temple",
+        "repurposed_structures:pyramid_badlands",
+        "repurposed_structures:pyramid_dark_forest",
+        "repurposed_structures:pyramid_end",
+        "repurposed_structures:pyramid_flower_forest",
+        "repurposed_structures:pyramid_giant_tree_taiga",
+        "repurposed_structures:pyramid_icy",
+        "repurposed_structures:pyramid_jungle",
+        "repurposed_structures:pyramid_mushroom",
+        "repurposed_structures:pyramid_nether",
+        "repurposed_structures:pyramid_ocean",
+        "repurposed_structures:pyramid_snowy"
+      ]
+    },
+    {
+      "family": "jungle_temple",
+      "soul": "spiderqueen_hungrycraft:thief_soul",
+      "structures": [
+        "minecraft:jungle_pyramid",
+        "betterjungletemples:jungle_temple",
+        "repurposed_structures:temple_nether_basalt",
+        "repurposed_structures:temple_nether_crimson",
+        "repurposed_structures:temple_nether_soul",
+        "repurposed_structures:temple_nether_warped",
+        "repurposed_structures:temple_nether_wasteland",
+        "repurposed_structures:temple_ocean",
+        "repurposed_structures:temple_taiga"
+      ]
+    },
+    {
+      "family": "pillager_outpost",
+      "soul": "spiderqueen_hungrycraft:scoundrel_soul",
+      "structures": [
+        "minecraft:pillager_outpost",
+        "repurposed_structures:outpost_badlands",
+        "repurposed_structures:outpost_birch",
+        "repurposed_structures:outpost_crimson",
+        "repurposed_structures:outpost_desert",
+        "repurposed_structures:outpost_end",
+        "repurposed_structures:outpost_giant_tree_taiga",
+        "repurposed_structures:outpost_icy",
+        "repurposed_structures:outpost_jungle",
+        "repurposed_structures:outpost_mangrove",
+        "repurposed_structures:outpost_nether_brick",
+        "repurposed_structures:outpost_oak",
+        "repurposed_structures:outpost_snowy",
+        "repurposed_structures:outpost_taiga",
+        "repurposed_structures:outpost_warped"
+      ]
+    },
+    {
+      "family": "woodland_mansion",
+      "soul": "spiderqueen_hungrycraft:executioner_soul",
+      "structures": [
+        "minecraft:mansion",
+        "repurposed_structures:mansion_birch",
+        "repurposed_structures:mansion_desert",
+        "repurposed_structures:mansion_jungle",
+        "repurposed_structures:mansion_mangrove",
+        "repurposed_structures:mansion_oak",
+        "repurposed_structures:mansion_savanna",
+        "repurposed_structures:mansion_snowy",
+        "repurposed_structures:mansion_taiga"
+      ]
+    },
+    {
+      "family": "ancient_city",
+      "soul": "spiderqueen_hungrycraft:tyrant_soul",
+      "structures": [
+        "minecraft:ancient_city",
+        "repurposed_structures:ancient_city_end",
+        "repurposed_structures:ancient_city_nether",
+        "repurposed_structures:ancient_city_ocean"
+      ]
+    },
+    {
+      "family": "stronghold",
+      "soul": "spiderqueen_hungrycraft:scoundrel_soul",
+      "structures": [
+        "minecraft:stronghold",
+        "betterstrongholds:stronghold",
+        "repurposed_structures:stronghold_end",
+        "repurposed_structures:stronghold_nether"
+      ]
+    },
+    {
+      "family": "ruined_portal",
+      "soul": "spiderqueen_hungrycraft:nameless_traveler_soul",
+      "structures": [
+        "minecraft:ruined_portal",
+        "minecraft:ruined_portal_desert",
+        "minecraft:ruined_portal_jungle",
+        "minecraft:ruined_portal_mountain",
+        "minecraft:ruined_portal_nether",
+        "minecraft:ruined_portal_ocean",
+        "minecraft:ruined_portal_swamp",
+        "repurposed_structures:ruined_portal_end"
+      ],
+      "structure_tags": ["minecraft:ruined_portal"]
+    },
+    {
+      "family": "nether_fortress",
+      "soul": "spiderqueen_hungrycraft:executioner_soul",
+      "structures": [
+        "minecraft:fortress",
+        "betterfortresses:fortress",
+        "repurposed_structures:fortress_jungle"
+      ]
+    },
+    {
+      "family": "bastion",
+      "soul": "spiderqueen_hungrycraft:executioner_soul",
+      "structures": [
+        "minecraft:bastion_remnant",
+        "repurposed_structures:bastion_underground"
+      ]
+    },
+    {
+      "family": "end_city",
+      "soul": "spiderqueen_hungrycraft:hero_soul",
+      "structures": [
+        "minecraft:end_city",
+        "repurposed_structures:city_nether",
+        "repurposed_structures:city_overworld"
+      ]
+    }
+  ]
+}

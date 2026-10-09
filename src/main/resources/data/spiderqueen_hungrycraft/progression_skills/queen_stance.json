@@ -1,0 +1,15 @@
+{
+  "required_level": 5,
+  "soul_cost": 1000,
+  "prerequisites": [],
+  "icon": "minecraft:iron_sword",
+  "name": "skill.spiderqueen_hungrycraft.queen_stance",
+  "description": "skill.spiderqueen_hungrycraft.queen_stance.desc",
+  "input_hint": "empowered_attack",
+  "required_for_legend": true,
+  "layout": {
+    "anchor_level": 5,
+    "side": "right",
+    "lane": 1
+  }
+}

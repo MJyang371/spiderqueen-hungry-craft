@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "spiderqueen_hungrycraft:beast_bite",
+    "spiderqueen_hungrycraft:beast_stomp",
+    "spiderqueen_hungrycraft:beast_charge"
+  ]
+}

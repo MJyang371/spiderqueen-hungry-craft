@@ -1,0 +1,41 @@
+{
+  "_comment": [
+    "The optional Ice and Fire compatibility of Spider Queen: Hungry Craft (Necromancy IV prototype 2).",
+    "It is a configuration of its own, and every one of its properties says the same thing: a game without Ice and",
+    "Fire must not be touched by it at all.",
+    "  required  : false - a mixin of this configuration that can not be applied is a logged note, never a crash.",
+    "  client    : everything in here only changes which texture a dragon is drawn with, and whether Ice and Fire's",
+    "              eye layer draws on a woken dragon, so a dedicated server never loads these classes at all.",
+    "  plugin    : the gate. It answers 'shouldApplyMixin' with no while Ice and Fire is not installed, and a mixin",
+    "              that is not applied is a mixin whose class Mixin never loads - which is what keeps the names of",
+    "              another mod out of a game that does not have it.",
+    "  mixins    : the hooks that both the server and the client need. EntityDragonBaseRiderMixin answers the one",
+    "              question the riding of Ice and Fire hangs on (Entity#getControllingPassenger) for a skeleton under",
+    "              a contract, and it has to be there on both sides: the entity asks it while it moves on the server",
+    "              and while it is drawn on the client.",
+    "  refmap    : the reference map of the rider hook, and the only entry it has is named after a VANILLA method",
+    "              (Entity#getControllingPassenger) that Ice and Fire merely overrides. The generated refmap of the",
+    "              main configuration can not carry that name - the Minecraft mappings do not know the class of",
+    "              another mod - so the one entry is written into spiderqueen_hungrycraft_iaf.refmap.json by hand. The",
+    "              two client hooks need no entry at all: they are remap = false and name methods of Ice and Fire",
+    "              itself, whose names are identical in a development workspace and in a published jar."
+  ],
+  "required": false,
+  "package": "spiderqueenhungrycraft.mixin.compat.iaf",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "spiderqueenhungrycraft.mixin.compat.iaf.IceAndFireMixinPlugin",
+  "refmap": "spiderqueen_hungrycraft_iaf.refmap.json",
+  "minVersion": "0.8",
+  "mixins": [
+    "EntityDragonBaseRiderMixin",
+    "EntityDragonBaseAutonomyMixin",
+    "IafDragonFlightManagerAutonomyMixin"
+  ],
+  "client": [
+    "EnumDragonTexturesMixin",
+    "EntityDragonBaseEyesMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
