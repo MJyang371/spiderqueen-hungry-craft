@@ -1,0 +1,15 @@
+{
+  "required_level": 20,
+  "soul_cost": 1000,
+  "prerequisites": [],
+  "icon": "minecraft:enchanted_golden_apple",
+  "name": "skill.spiderqueen_hungrycraft.queen_beast",
+  "description": "skill.spiderqueen_hungrycraft.queen_beast.desc",
+  "input_hint": "beast_transform",
+  "required_for_legend": true,
+  "layout": {
+    "anchor_level": 20,
+    "side": "left",
+    "lane": 1
+  }
+}

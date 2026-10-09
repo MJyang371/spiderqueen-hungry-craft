@@ -1,0 +1,523 @@
+{
+  "schema_version": 1,
+  "id": "spiderqueen_hungrycraft:human_equipment_loadouts_v0_1",
+  "notes": [
+    "First-pass data-driven loadout table for Low/Mid/High Prepared Humans.",
+    "All three mobs may display the entity name 'Steve'; spawn egg item names should remain tier-specific.",
+    "Scores are split into armor_score, weapon_score, and medicine_score.",
+    "No enchantments, no crossbows, infinite arrows for bow testing.",
+    "Equipment drops are not affected by Looting in v0.1."
+  ],
+  "tiers": {
+    "low_prepared_human": {
+      "display_entity_name": "Steve",
+      "armor_budget": {
+        "min": 0,
+        "max": 18
+      },
+      "weapon_budget": {
+        "min": 0,
+        "max": 8
+      },
+      "medicine_budget": {
+        "min": 0,
+        "max": 5
+      },
+      "empty_slot_chance": {
+        "armor": 0.35,
+        "melee_weapon": 0.2,
+        "bow": 0.75,
+        "shield": 0.8
+      }
+    },
+    "mid_prepared_human": {
+      "display_entity_name": "Steve",
+      "armor_budget": {
+        "min": 18,
+        "max": 38
+      },
+      "weapon_budget": {
+        "min": 8,
+        "max": 18
+      },
+      "medicine_budget": {
+        "min": 5,
+        "max": 15
+      },
+      "empty_slot_chance": {
+        "armor": 0.15,
+        "melee_weapon": 0.08,
+        "bow": 0.45,
+        "shield": 0.45
+      }
+    },
+    "high_prepared_human": {
+      "display_entity_name": "Steve",
+      "armor_budget": {
+        "min": 34,
+        "max": 62
+      },
+      "weapon_budget": {
+        "min": 16,
+        "max": 32
+      },
+      "medicine_budget": {
+        "min": 10,
+        "max": 25
+      },
+      "empty_slot_chance": {
+        "armor": 0.04,
+        "melee_weapon": 0.03,
+        "bow": 0.25,
+        "shield": 0.25
+      }
+    }
+  },
+  "selection_rules": {
+    "armor": {
+      "score_pool": "armor_score",
+      "max_one_per_slot": true,
+      "slots": [
+        "head",
+        "chest",
+        "legs",
+        "feet"
+      ],
+      "allow_empty_slots": true,
+      "selection_order": "randomized_slots"
+    },
+    "shield": {
+      "score_pool": "armor_score",
+      "max_count": 1,
+      "allow_absent": true
+    },
+    "melee_weapon": {
+      "score_pool": "weapon_score",
+      "max_count": 1,
+      "allow_unarmed": true
+    },
+    "bow": {
+      "score_pool": "weapon_score",
+      "max_count": 1,
+      "allow_absent": true,
+      "infinite_arrows": true,
+      "requires_draw_ticks": 20,
+      "crossbow_enabled": false
+    },
+    "medicine": {
+      "score_pool": "medicine_score",
+      "golden_apple_only_in_v0_1": true,
+      "allow_absent": true
+    },
+    "enchantments": {
+      "enabled": false
+    }
+  },
+  "drop_rules": {
+    "equipment_drop_chance": 0.2,
+    "medicine_drop_chance": 0.0,
+    "affected_by_looting": false,
+    "looting_bonus_per_level": 0.0,
+    "dropped_durability_remaining_percent": {
+      "min": 0.1,
+      "max": 0.45
+    },
+    "drop_enchantments": false,
+    "applies_to": [
+      "armor",
+      "shield",
+      "melee_weapon",
+      "bow"
+    ]
+  },
+  "items": {
+    "armor": [
+      {
+        "id": "minecraft:leather_helmet",
+        "slot": "head",
+        "score": 2,
+        "weight": {
+          "low": 90,
+          "mid": 25,
+          "high": 3
+        }
+      },
+      {
+        "id": "minecraft:leather_chestplate",
+        "slot": "chest",
+        "score": 4,
+        "weight": {
+          "low": 90,
+          "mid": 25,
+          "high": 3
+        }
+      },
+      {
+        "id": "minecraft:leather_leggings",
+        "slot": "legs",
+        "score": 4,
+        "weight": {
+          "low": 90,
+          "mid": 25,
+          "high": 3
+        }
+      },
+      {
+        "id": "minecraft:leather_boots",
+        "slot": "feet",
+        "score": 2,
+        "weight": {
+          "low": 90,
+          "mid": 25,
+          "high": 3
+        }
+      },
+      {
+        "id": "minecraft:golden_helmet",
+        "slot": "head",
+        "score": 3,
+        "weight": {
+          "low": 45,
+          "mid": 25,
+          "high": 2
+        }
+      },
+      {
+        "id": "minecraft:golden_chestplate",
+        "slot": "chest",
+        "score": 6,
+        "weight": {
+          "low": 45,
+          "mid": 25,
+          "high": 2
+        }
+      },
+      {
+        "id": "minecraft:golden_leggings",
+        "slot": "legs",
+        "score": 5,
+        "weight": {
+          "low": 45,
+          "mid": 25,
+          "high": 2
+        }
+      },
+      {
+        "id": "minecraft:golden_boots",
+        "slot": "feet",
+        "score": 3,
+        "weight": {
+          "low": 45,
+          "mid": 25,
+          "high": 2
+        }
+      },
+      {
+        "id": "minecraft:chainmail_helmet",
+        "slot": "head",
+        "score": 4,
+        "weight": {
+          "low": 35,
+          "mid": 65,
+          "high": 8
+        }
+      },
+      {
+        "id": "minecraft:chainmail_chestplate",
+        "slot": "chest",
+        "score": 7,
+        "weight": {
+          "low": 35,
+          "mid": 65,
+          "high": 8
+        }
+      },
+      {
+        "id": "minecraft:chainmail_leggings",
+        "slot": "legs",
+        "score": 6,
+        "weight": {
+          "low": 35,
+          "mid": 65,
+          "high": 8
+        }
+      },
+      {
+        "id": "minecraft:chainmail_boots",
+        "slot": "feet",
+        "score": 3,
+        "weight": {
+          "low": 35,
+          "mid": 65,
+          "high": 8
+        }
+      },
+
+      {
+        "id": "minecraft:iron_helmet",
+        "slot": "head",
+        "score": 5,
+        "weight": {
+          "low": 12,
+          "mid": 100,
+          "high": 55
+        }
+      },
+      {
+        "id": "minecraft:iron_chestplate",
+        "slot": "chest",
+        "score": 10,
+        "weight": {
+          "low": 12,
+          "mid": 100,
+          "high": 55
+        }
+      },
+      {
+        "id": "minecraft:iron_leggings",
+        "slot": "legs",
+        "score": 8,
+        "weight": {
+          "low": 12,
+          "mid": 100,
+          "high": 55
+        }
+      },
+      {
+        "id": "minecraft:iron_boots",
+        "slot": "feet",
+        "score": 5,
+        "weight": {
+          "low": 12,
+          "mid": 100,
+          "high": 55
+        }
+      },
+      {
+        "id": "minecraft:diamond_helmet",
+        "slot": "head",
+        "score": 9,
+        "weight": {
+          "low": 0,
+          "mid": 12,
+          "high": 95
+        }
+      },
+      {
+        "id": "minecraft:diamond_chestplate",
+        "slot": "chest",
+        "score": 17,
+        "weight": {
+          "low": 0,
+          "mid": 12,
+          "high": 95
+        }
+      },
+      {
+        "id": "minecraft:diamond_leggings",
+        "slot": "legs",
+        "score": 13,
+        "weight": {
+          "low": 0,
+          "mid": 12,
+          "high": 95
+        }
+      },
+      {
+        "id": "minecraft:diamond_boots",
+        "slot": "feet",
+        "score": 9,
+        "weight": {
+          "low": 0,
+          "mid": 12,
+          "high": 95
+        }
+      },
+      {
+        "id": "minecraft:netherite_helmet",
+        "slot": "head",
+        "score": 11,
+        "weight": {
+          "low": 0,
+          "mid": 0,
+          "high": 20
+        }
+      },
+      {
+        "id": "minecraft:netherite_chestplate",
+        "slot": "chest",
+        "score": 20,
+        "weight": {
+          "low": 0,
+          "mid": 0,
+          "high": 20
+        }
+      },
+      {
+        "id": "minecraft:netherite_leggings",
+        "slot": "legs",
+        "score": 16,
+        "weight": {
+          "low": 0,
+          "mid": 0,
+          "high": 20
+        }
+      },
+      {
+        "id": "minecraft:netherite_boots",
+        "slot": "feet",
+        "score": 11,
+        "weight": {
+          "low": 0,
+          "mid": 0,
+          "high": 20
+        }
+      }
+    ],
+    "shield": [
+      {
+        "id": "minecraft:shield",
+        "score": 8,
+        "weight": {
+          "low": 10,
+          "mid": 55,
+          "high": 75
+        }
+      }
+    ],
+    "melee_weapon": [
+      {
+        "id": "minecraft:wooden_sword",
+        "score": 2,
+        "weight": {
+          "low": 85,
+          "mid": 10,
+          "high": 0
+        }
+      },
+      {
+        "id": "minecraft:golden_sword",
+        "score": 2,
+        "weight": {
+          "low": 35,
+          "mid": 8,
+          "high": 0
+        }
+      },
+      {
+        "id": "minecraft:stone_sword",
+        "score": 4,
+        "weight": {
+          "low": 100,
+          "mid": 35,
+          "high": 2
+        }
+      },
+      {
+        "id": "minecraft:iron_sword",
+        "score": 8,
+        "weight": {
+          "low": 25,
+          "mid": 100,
+          "high": 45
+        }
+      },
+      {
+        "id": "minecraft:diamond_sword",
+        "score": 14,
+        "weight": {
+          "low": 0,
+          "mid": 18,
+          "high": 95
+        }
+      },
+      {
+        "id": "minecraft:netherite_sword",
+        "score": 18,
+        "weight": {
+          "low": 0,
+          "mid": 0,
+          "high": 25
+        }
+      },
+      {
+        "id": "minecraft:wooden_axe",
+        "score": 3,
+        "weight": {
+          "low": 35,
+          "mid": 6,
+          "high": 0
+        }
+      },
+      {
+        "id": "minecraft:golden_axe",
+        "score": 3,
+        "weight": {
+          "low": 15,
+          "mid": 4,
+          "high": 0
+        }
+      },
+      {
+        "id": "minecraft:stone_axe",
+        "score": 5,
+        "weight": {
+          "low": 45,
+          "mid": 20,
+          "high": 1
+        }
+      },
+      {
+        "id": "minecraft:iron_axe",
+        "score": 10,
+        "weight": {
+          "low": 5,
+          "mid": 45,
+          "high": 25
+        }
+      },
+      {
+        "id": "minecraft:diamond_axe",
+        "score": 16,
+        "weight": {
+          "low": 0,
+          "mid": 8,
+          "high": 65
+        }
+      },
+      {
+        "id": "minecraft:netherite_axe",
+        "score": 20,
+        "weight": {
+          "low": 0,
+          "mid": 0,
+          "high": 18
+        }
+      }
+    ],
+    "bow": [
+      {
+        "id": "minecraft:bow",
+        "score": 8,
+        "weight": {
+          "low": 20,
+          "mid": 60,
+          "high": 75
+        }
+      }
+    ],
+    "medicine": [
+      {
+        "id": "minecraft:golden_apple",
+        "score": 5,
+        "max_count": 5,
+        "weight": {
+          "low": 35,
+          "mid": 70,
+          "high": 90
+        }
+      }
+    ]
+  }
+}
+

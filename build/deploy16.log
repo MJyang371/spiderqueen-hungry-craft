@@ -1,0 +1,36 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Hungry Craft: offline mode is on, no network access is used (pass -Phungrycraft.offline=false to allow it).
+
+> Configure project :
+Java: 21.0.12.1, JVM: 21.0.12.1+1-LTS (Microsoft), Arch: amd64
+
+> Task :compileJava
+> Task :processResources UP-TO-DATE
+> Task :classes
+> Task :jar
+> Task :downloadMcpConfig
+> Task :extractSrg UP-TO-DATE
+> Task :createMcpToSrg UP-TO-DATE
+> Task :reobfJar
+> Task :jarJar SKIPPED
+> Task :reobfJarJar SKIPPED
+> Task :assemble
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :check UP-TO-DATE
+> Task :build
+
+> Task :deployIceAndFireTest
+  removing old Hungry Craft jar: spiderqueen_hungrycraft-0.0.1-dev.jar
+
+Hungry Craft deployed.
+  source : D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\build\libs\spiderqueen_hungrycraft-0.0.1-dev.jar
+  target : D:\我的世界测试版\2\versions\1.20.1-Forge_47.4.23\mods\spiderqueen_hungrycraft-0.0.1-dev.jar
+  mods   : [冰火传说] iceandfire-2.1.13-1.20.1-beta-5.jar, citadel-2.6.3-1.20.1.jar, spiderqueen_hungrycraft-0.0.1-dev.jar
+Start the test instance (D:\我的世界测试版\2\versions\1.20.1-Forge_47.4.23) yourself - this build never launches a launcher or a game.
+
+BUILD SUCCESSFUL in 1m 6s
+8 actionable tasks: 5 executed, 3 up-to-date

@@ -1,0 +1,41 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Hungry Craft: offline mode is on, no network access is used (pass -Phungrycraft.offline=false to allow it).
+
+> Configure project :
+Java: 21.0.12.1, JVM: 21.0.12.1+1-LTS (Microsoft), Arch: amd64
+
+> Task :compileJava
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\brood\BroodSelection.java:131: 错误: 找不到符号
+        NecromancyDiagnostics.log("select visible: candidates=" + candidates.length
+        ^
+  符号:   变量 NecromancyDiagnostics
+  位置: 类 BroodSelection
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\brood\BroodSelection.java:363: 错误: 找不到符号
+            NecromancyDiagnostics.log("select box: nothing inside " + box + " (drag was empty of units)");
+            ^
+  符号:   变量 NecromancyDiagnostics
+  位置: 类 BroodSelection
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\brood\BroodSelection.java:368: 错误: 找不到符号
+        NecromancyDiagnostics.log("select box: chosen=" + chosen.size() + " from " + box);
+        ^
+  符号:   变量 NecromancyDiagnostics
+  位置: 类 BroodSelection
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+3 个错误
+
+> Task :compileJava FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+> Run with --info option to get more log output.
+> Run with --scan to get full insights.
+
+BUILD FAILED in 32s
+1 actionable task: 1 executed

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "F",
+    "M"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:string"
+    },
+    "M": {
+      "item": "spiderqueen_hungrycraft:spider_mine"
+    }
+  },
+  "result": {
+    "item": "spiderqueen_hungrycraft:delayed_spider_mine",
+    "count": 1
+  }
+}

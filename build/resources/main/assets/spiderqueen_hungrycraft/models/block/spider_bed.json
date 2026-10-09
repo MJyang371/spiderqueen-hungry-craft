@@ -1,0 +1,50 @@
+{
+  "render_type": "cutout",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "spiderqueen_hungrycraft:block/spider_bed",
+    "web": "spiderqueen_hungrycraft:block/spider_bed"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 2.8],
+      "to": [16, 16, 3.2],
+      "faces": {
+        "north": { "texture": "#web" },
+        "south": { "texture": "#web" }
+      }
+    },
+    {
+      "from": [0, 0, 5.3],
+      "to": [16, 16, 5.7],
+      "faces": {
+        "north": { "texture": "#web" },
+        "south": { "texture": "#web" }
+      }
+    },
+    {
+      "from": [0, 0, 7.8],
+      "to": [16, 16, 8.2],
+      "faces": {
+        "north": { "texture": "#web" },
+        "south": { "texture": "#web" }
+      }
+    },
+    {
+      "from": [0, 0, 10.3],
+      "to": [16, 16, 10.7],
+      "faces": {
+        "north": { "texture": "#web" },
+        "south": { "texture": "#web" }
+      }
+    },
+    {
+      "from": [0, 0, 12.8],
+      "to": [16, 16, 13.2],
+      "faces": {
+        "north": { "texture": "#web" },
+        "south": { "texture": "#web" }
+      }
+    }
+  ]
+}

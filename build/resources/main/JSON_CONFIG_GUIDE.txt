@@ -1,0 +1,1172 @@
+================================================================================
+ 蜘蛛女王：饥饿工艺 —— JSON 配布教程
+ Spider Queen: Hungry Craft —— JSON Configuration Guide
+ 对应 jar / For the jar: spiderqueen_hungrycraft-0.0.1-dev.jar
+ 适用环境 / Environment: Minecraft 1.20.1 + Forge 47.x
+ 本文件版本 / Guide revision: 1 (随 LAIR-CORE-1 版本发布)
+================================================================================
+
+【0】这个文件是什么（必读）
+中文：
+  这是一份「纯说明文档」。本 mod 的任何代码都不会读取它：它不参与注册、不参与数据包或资源
+  包的解析、不占用任何 id、也不进任何注册表。因此：
+    · 留在 jar 里：对游戏没有任何影响。
+    · 直接删掉：游戏照常运行。
+    · 它不可能因为「没被移除」而导致游戏崩溃。
+  它的唯一用途：让整合包作者与服主不必反编译，就能修改本 mod 的数值、规则、掉落与外观。
+  本文件的位置：
+    · jar 内部：JSON_CONFIG_GUIDE.txt（jar 根目录）
+    · jar 旁边：build/libs/spiderqueen_hungrycraft_JSON_CONFIG_GUIDE.txt（免解压查看）
+
+English:
+  This is a documentation-only file. No code of this mod ever reads it: it takes part
+  in no registry, in no datapack or resourcepack parsing, claims no id, and never
+  enters a registry. Therefore:
+    · Keeping it inside the jar: zero effect on the game.
+    · Deleting it: the game runs exactly the same.
+    · It can never crash the game by being left in place.
+  Its only purpose is to let modpack authors and server owners change the numbers,
+  rules, drops and looks of this mod without decompiling anything.
+  Where it lives:
+    · Inside the jar: JSON_CONFIG_GUIDE.txt (jar root)
+    · Next to the jar: build/libs/spiderqueen_hungrycraft_JSON_CONFIG_GUIDE.txt
+
+--------------------------------------------------------------------------------
+【1】快速开始 / Quick start
+--------------------------------------------------------------------------------
+中文：
+  1) 两种包，改的东西不同：
+     · 数据包(datapack)：改「规则 / 数值 / 掉落 / 标签 / 维度 / 伤害类型」，路径在 data/ 下。
+     · 资源包(resourcepack)：改「贴图 / 模型 / 语言 / 粒子 / 音效」，路径在 assets/ 下。
+  2) 覆盖 mod 内置 json 的推荐做法：在你的包里放「完全相同的路径」。例如要改巨蛛真身调参，
+     就在数据包里新建：
+       data/spiderqueen_hungrycraft/queen_beast/tuning.json
+     数据包的优先级高于 mod 内置资源，所以你的文件会整体替换掉 mod 的文件。
+  3) 数据包放在：<存档目录>/datapacks/<你的包名>/ ，并且必须带 pack.mcmeta
+     （1.20.1 的 pack_format = 15）。世界内执行 /reload 即可生效，不必重启。
+  4) 写错了不会崩：无法识别的方块/实体/物品 id 会被跳过，并在日志里留一行 warn，
+     本次修改不生效，但世界和游戏继续正常运行。改之前请先备份原文件。
+  5) 需要重启的情况：维度与维度类型（dynamic registry 内容）改动后，需要退出重进世界
+     或重启游戏；纯客户端资源（模型/语言）建议按 F3+T 重载或重启客户端。
+
+English:
+  1) Two kinds of packs, two kinds of data:
+     · Datapack: rules, numbers, loot, tags, dimensions, damage types. Lives under data/.
+     · Resourcepack: textures, models, language, particles, sounds. Lives under assets/.
+  2) Recommended way to override a built-in json: ship the exact same path in your pack.
+     To retune the Queen Beast, create:
+       data/spiderqueen_hungrycraft/queen_beast/tuning.json
+     Datapacks have a higher priority than built-in mod resources, so your file simply
+     replaces the file of the mod.
+  3) Put datapacks in <world>/datapacks/<your_pack>/ and give it a pack.mcmeta
+     (pack_format = 15 on 1.20.1). Run /reload inside the world; no restart needed.
+  4) A typo cannot crash anything: unknown block/entity/item ids are skipped with one
+     warning line in the log, that one change does nothing, and the game keeps running.
+     Always back up the original file first.
+  5) A restart is needed for dimensions and dimension types (dynamic registry content):
+     leave and re-enter the world or restart the game. Client resources (models,
+     language) are best reloaded with F3+T or a client restart.
+--------------------------------------------------------------------------------
+【2】配布文件总表 / File index
+--------------------------------------------------------------------------------
+中文（下表为 jar 内路径；在你的数据包/资源包里放同名路径即可覆盖）：
+  路径                                                          | 改什么
+  ------------------------------------------------------------- | ----------------
+  data/spiderqueen_hungrycraft/recipes/territory_core.json       | 领地核心配方
+  data/spiderqueen_hungrycraft/loot_tables/blocks/*.json         | 5 个方块的掉落表
+  data/spiderqueen_hungrycraft/loot_modifiers/queen_web_harvest.json | 女王采网掉落修改器
+  data/spiderqueen_hungrycraft/loot_modifiers/soul_container.json | 灵魂容器掉落修改器
+  data/spiderqueen_hungrycraft/soul_loot/*.json (3 个)          | 灵魂容器规则（家族/表/权重）
+
+  data/forge/loot_modifiers/global_loot_modifiers.json           | 全局掉落修改器清单
+  data/spiderqueen_hungrycraft/queen_beast/tuning.json           | 巨蛛真身全部数值
+  data/spiderqueen_hungrycraft/human_loadouts/default.json       | Steve 三档装备表
+  data/spiderqueen_hungrycraft/human_spawns/default.json         | 人类刷新与村庄驻军
+  data/spiderqueen_hungrycraft/dimension/stomach.json            | 胃袋维度
+  data/spiderqueen_hungrycraft/dimension_type/stomach.json       | 胃袋维度类型
+  data/spiderqueen_hungrycraft/worldgen/biome/stomach.json       | 胃袋生物群系
+  data/spiderqueen_hungrycraft/damage_type/*.json (5 个)         | 自定义伤害类型
+  data/minecraft/tags/damage_type/bypasses_*.json (5 个)         | 胃袋伤害无视护甲/冷却/魔咒/抗性/盾
+  data/spiderqueen_hungrycraft/tags/blocks/*.json (4 个)         | 方块分类标签
+  data/spiderqueen_hungrycraft/tags/entity_types/*.json (12 个)  | 阵营/免疫/可捕获等
+  data/spiderqueen_hungrycraft/tags/items/poison_web_trigger_foods.json | 毒蛛丝强化食物
+  data/spiderqueen_hungrycraft/tags/damage_type/beast_attacks.json | 巨蛛攻击伤害集合
+  assets/spiderqueen_hungrycraft/lang/{zh_cn,en_us}.json         | 名称/提示文本
+  assets/spiderqueen_hungrycraft/blockstates/*.json              | 方块状态→模型
+  assets/spiderqueen_hungrycraft/models/{block,item}/*.json      | 模型
+  assets/spiderqueen_hungrycraft/particles/*.json                | 粒子贴图
+  assets/spiderqueen_hungrycraft/sounds.json                     | 音效定义
+
+English (paths are inside the jar; ship the same path in your pack to override):
+  路径                                                          | 改什么
+  ------------------------------------------------------------- | ----------------
+  data/spiderqueen_hungrycraft/recipes/territory_core.json       | Territory Core recipe
+  data/spiderqueen_hungrycraft/loot_tables/blocks/*.json         | loot of 5 blocks
+  data/spiderqueen_hungrycraft/loot_modifiers/queen_web_harvest.json | queen web harvest
+  data/spiderqueen_hungrycraft/loot_modifiers/soul_container.json | soul container modifier
+  data/spiderqueen_hungrycraft/soul_loot/*.json (3 files)         | soul container rule book
+
+  data/forge/loot_modifiers/global_loot_modifiers.json           | global loot modifier list
+  data/spiderqueen_hungrycraft/queen_beast/tuning.json           | all Queen Beast numbers
+  data/spiderqueen_hungrycraft/human_loadouts/default.json       | Steve loadout table
+  data/spiderqueen_hungrycraft/human_spawns/default.json         | human spawns + garrison
+  data/spiderqueen_hungrycraft/dimension/stomach.json            | Stomach dimension
+  data/spiderqueen_hungrycraft/dimension_type/stomach.json       | Stomach dimension type
+  data/spiderqueen_hungrycraft/worldgen/biome/stomach.json       | Stomach biome
+  data/spiderqueen_hungrycraft/damage_type/*.json (5 files)      | custom damage types
+  data/minecraft/tags/damage_type/bypasses_*.json (5 files)      | stomach damage bypasses
+  data/spiderqueen_hungrycraft/tags/blocks/*.json (4 files)      | block tag groups
+  data/spiderqueen_hungrycraft/tags/entity_types/*.json (12)     | factions, immunity, capture
+  data/spiderqueen_hungrycraft/tags/items/poison_web_trigger_foods.json | poison food
+  data/spiderqueen_hungrycraft/tags/damage_type/beast_attacks.json | beast attack set
+  assets/spiderqueen_hungrycraft/lang/{zh_cn,en_us}.json         | names and messages
+  assets/spiderqueen_hungrycraft/blockstates/*.json              | blockstate to model
+  assets/spiderqueen_hungrycraft/models/{block,item}/*.json      | models
+  assets/spiderqueen_hungrycraft/particles/*.json                | particle textures
+  assets/spiderqueen_hungrycraft/sounds.json                     | sound definitions
+--------------------------------------------------------------------------------
+【3】领地核心 / Territory Core
+--------------------------------------------------------------------------------
+中文：
+  3.1 效果：放下领地核心后，以它所在的「区块段(section, 16x16x16)」为中心，压制 3x3x3 个
+      区块段（即 48x48x48 格）内的「自然刷新」。只拦自然刷新：刷怪蛋、/summon、刷怪笼、
+      繁殖、结构生成、事件生成全部照常。它不清除已有生物，也不阻挡生物走进来。
+      右键它会给右键者本人显示该范围 5 秒（穿墙可见）。用任何工具挖它都恒定 60 秒。
+  3.2 可以用 json 改的部分：
+      · 合成配方 data/spiderqueen_hungrycraft/recipes/territory_core.json
+        默认：8 个 minecraft:string + 1 个 #minecraft:beds（任意颜色的床都算）。
+        改法：把 key 换成别的物品/tag id，或改 pattern 与字母映射；整份替换也可以。
+      · 掉落 data/spiderqueen_hungrycraft/loot_tables/blocks/territory_core.json
+        默认：挖掉掉自己。可改成掉别的物品或加数量。
+      · 外观 assets/spiderqueen_hungrycraft/blockstates/territory_core.json 与
+        assets/spiderqueen_hungrycraft/models/block/territory_core.json
+        默认是 cube_all + minecraft:block/cobweb 贴图，并带 "render_type": "cutout"。
+        资源包可以换成自己的模型/贴图；render_type 也可用 cutout_mipped 或 solid。
+      · 名称与提示 assets/spiderqueen_hungrycraft/lang/zh_cn.json 与 en_us.json，
+        相关键：block.spiderqueen_hungrycraft.territory_core、
+        message.spiderqueen_hungrycraft.territory_range_shown。
+  3.3 不能用 json 改的部分（写在代码里，整合包改不了）：
+      · 范围大小与形状：3x3x3 区块段 = 48x48x48，按区块段对齐。
+      · 挖掘恒定 1/1200 每 tick = 60 秒，与工具、效率附魔无关。
+      · 只取消 MobSpawnType.NATURAL 这一个原因。
+      · 右键范围显示 5 秒（100 tick）、发光等级 10、末影风格粒子。
+
+English:
+  3.1 Effect: once placed, the core uses the chunk section (16x16x16) it sits in as the
+      centre and suppresses NATURAL spawns inside 3x3x3 sections (48x48x48 blocks).
+      Only natural spawns are blocked: spawn eggs, /summon, spawners, breeding,
+      structure spawns and event spawns all keep working. It never removes existing
+      mobs and never blocks mobs from walking in. Right click shows that box to the
+      clicking player for 5 seconds (visible through walls). Mining it always takes
+      exactly 60 seconds, with any tool.
+  3.2 What you CAN change with json:
+      · Recipe: data/spiderqueen_hungrycraft/recipes/territory_core.json
+        Default: 8x minecraft:string + 1x #minecraft:beds (any bed colour counts).
+        Change the key ids, or the pattern and its letters.
+      · Loot: data/spiderqueen_hungrycraft/loot_tables/blocks/territory_core.json
+        Default: it drops itself. You may change the item or the count.
+      · Looks: assets/spiderqueen_hungrycraft/blockstates/territory_core.json and
+        assets/spiderqueen_hungrycraft/models/block/territory_core.json
+        Default: cube_all with the minecraft:block/cobweb texture and
+        "render_type": "cutout". A resource pack may swap model and texture;
+        render_type also accepts cutout_mipped or solid.
+      · Names: assets/spiderqueen_hungrycraft/lang/zh_cn.json and en_us.json, keys
+        block.spiderqueen_hungrycraft.territory_core and
+        message.spiderqueen_hungrycraft.territory_range_shown.
+  3.3 What json can NOT change (fixed in code):
+      · The size and shape of the box: 3x3x3 sections = 48x48x48, section aligned.
+      · The constant 1/1200 per tick mining speed = 60 seconds, ignoring tool and
+        Efficiency.
+      · That only MobSpawnType.NATURAL is denied.
+      · The 5 second (100 tick) range display, the light level 10 and the
+        enderman style particles.
+--------------------------------------------------------------------------------
+【4】女王巨蛛真身调参（中文） / Queen Beast tuning (English below)
+--------------------------------------------------------------------------------
+文件：data/spiderqueen_hungrycraft/queen_beast/tuning.json
+  · 只有服务端读取它；/reload 后立刻生效，已经处于真身形态的玩家会马上换上新护甲。
+  · 所有键都是可选的：只写你要改的键，其余沿用内置默认（＝随包文件里给出的值）。
+  · 允许同时存在多份文件：按资源 id 字母序解析，后解析的覆盖先解析的。所以「用同名路径
+    覆盖」最省事；若想用自己的命名空间新增文件，命名空间排序要在 spiderqueen_hungrycraft
+    之后（例如 zz_ 开头）才能盖过 mod 的默认值。
+  · 键、默认值与含义（括号内是代码钳制范围）：
+      armor_bonus                        30.0   真身形态附加护甲
+      bite.width / height / depth        3.0 / 2.0 / 2.0   咬击判定体积（最小 0.5）
+      camera.bite_shake.duration_ticks   8      第一人称咬击顿挫时长（1~40）
+      camera.bite_shake.pitch_degrees    3.5    顿挫俯仰峰值（度）
+      camera.bite_shake.yaw_degrees      1.2    顿挫偏航峰值（度）
+      camera.bite_shake.roll_degrees     0.55   顿挫翻滚峰值（度）
+      camera.bite_shake.fov_degrees      3.0    顿挫视野收缩（度）
+      jump.max_charge_ticks              20     跳跃蓄力上限（1~60）
+      jump.minimum_stomp_charge          0.35   低于该蓄力不出踩踏
+      jump.min_vertical_velocity         0.55   最小起跳垂直速度
+      jump.max_vertical_velocity         1.05   最大起跳垂直速度
+      jump.forward_velocity              0.22   起跳前冲速度
+      stomp.damage                       15.0   落地踩踏伤害（上限 200）
+      stomp.radius                       4.0    踩踏半径（0.5~12）
+      stomp.vertical_range               2.5    踩踏垂直范围
+      stomp.knock_up                     0.9    踩踏击飞
+      stomp.knock_outward                0.35   踩踏外推
+      stomp.camera.duration_ticks        10     踩踏顿挫时长（1~40）
+      stomp.camera.pitch/yaw/roll/fov    5.0 / 1.5 / 0.7 / 4.0   踩踏顿挫四轴
+      charge.speed                       0.85   冲撞速度（0.1~3.0）
+      charge.food_interval_ticks         20     每多少 tick 扣一次饥饿（1~600）
+      charge.food_cost_per_interval      1      每次扣多少饥饿点（0~20）
+      charge.damage                      20.0   冲撞伤害（上限 200）
+      charge.knock_up                    0.8    冲撞击飞
+      charge.knock_forward               1.0    冲撞前推
+      charge.max_turn_degrees_per_tick   3.0    每 tick 最大转向角（度）
+      charge.hard_impact_explosion_power 4.0    撞上硬方块时的爆炸威力（0~16）
+      block_breaking.<档位>.<键>          见第 5 节
+  · 破坏方块规则优先级（代码固定，从最强到最弱）：
+      1) protected_blocks / protected_tags 里的方块永不破坏；
+      2) 硬度小于 0 的方块（基岩等）永不破坏；
+      3) 带方块实体的方块（箱子、机器）只有 allow_block_entities=true 才会被破坏；
+      4) allow_blocks / allow_tags 里显式列出的方块会被破坏，即使超过硬度上限；
+      5) 其余按 max_hardness（<=）或 hardness_reference（严格小于该方块硬度）判定。
+  · 不在调参范围内（代码固定）：真身伤害类型、模型/动画、HUD、按键、蓄力音效等。
+--------------------------------------------------------------------------------
+【4-E】Queen Beast tuning (English)
+--------------------------------------------------------------------------------
+  File: data/spiderqueen_hungrycraft/queen_beast/tuning.json
+  · Read by the server only. /reload applies it at once, and the armour of a player
+    who is already transformed is recalculated immediately.
+  · Every key is optional: only write what you want to change, everything else keeps
+    the built-in default, which is exactly the value shown in the shipped file.
+  · Any number of files may exist: they are parsed in alphabetical resource id order
+    and a later file overrides an earlier one. Overriding the same path is the easy
+    way. A file in your own namespace only wins if that namespace sorts after
+    spiderqueen_hungrycraft (for example zz_).
+  · Keys, defaults and clamps in brackets:
+      armor_bonus                        30.0   extra armour in beast form
+      bite.width / height / depth        3.0 / 2.0 / 2.0   bite hit volume (min 0.5)
+      camera.bite_shake.duration_ticks   8      bite camera punch length (1~40)
+      camera.bite_shake.pitch_degrees    3.5    pitch peak in degrees
+      camera.bite_shake.yaw_degrees      1.2    yaw peak in degrees
+      camera.bite_shake.roll_degrees     0.55   roll peak in degrees
+      camera.bite_shake.fov_degrees      3.0    fov pull in degrees
+      jump.max_charge_ticks              20     charge limit (1~60)
+      jump.minimum_stomp_charge          0.35   below this no stomp happens
+      jump.min_vertical_velocity         0.55   slowest take off
+      jump.max_vertical_velocity         1.05   fastest take off
+      jump.forward_velocity              0.22   forward speed of a jump
+      stomp.damage                       15.0   landing damage (max 200)
+      stomp.radius                       4.0    stomp radius (0.5~12)
+      stomp.vertical_range               2.5    stomp vertical range
+      stomp.knock_up                     0.9    upward knock
+      stomp.knock_outward                0.35   outward knock
+      stomp.camera.duration_ticks        10     stomp camera punch length (1~40)
+      stomp.camera.pitch/yaw/roll/fov    5.0 / 1.5 / 0.7 / 4.0   stomp camera axes
+      charge.speed                       0.85   charge speed (0.1~3.0)
+      charge.food_interval_ticks         20     ticks between two food costs (1~600)
+      charge.food_cost_per_interval      1      food points per cost (0~20)
+      charge.damage                      20.0   charge damage (max 200)
+      charge.knock_up                    0.8    upward knock of a charge
+      charge.knock_forward               1.0    forward push of a charge
+      charge.max_turn_degrees_per_tick   3.0    turning limit per tick in degrees
+      charge.hard_impact_explosion_power 4.0    explosion power on a hard impact (0~16)
+      block_breaking.<profile>.<key>      see section 5
+  · Break rule priority, fixed in code, strongest first:
+      1) a block in protected_blocks / protected_tags is never broken,
+      2) a block with hardness below 0 (bedrock and friends) is never broken,
+      3) a block with a block entity is only broken when allow_block_entities is true,
+      4) a block listed in allow_blocks / allow_tags is broken even above the limit,
+      5) everything else is judged by max_hardness (<=) or, when hardness_reference is
+         given, by strictly less than the hardness of that block.
+  · Outside of the tuning file (fixed in code): damage types, models and animations,
+    the HUD, the keys and the charge sounds.
+--------------------------------------------------------------------------------
+【5】巨蛛真身破坏方块规则 / Beast block breaking rules
+--------------------------------------------------------------------------------
+中文：
+  位置：tuning.json 里的 "block_breaking" 段，共 4 个档位，分别对应四种能力：
+    · transform_clearance  变形清场（变身瞬间清出空间）
+    · body_crush           走路压碎（普通行走压碎的小障碍）
+    · stomp                落地踩踏
+    · charge               高速冲撞
+  每档可写的键（都可选，缺省沿用内置默认）：
+    max_hardness           硬度上限，<= 该值可破坏（默认：各档不同，见随包文件）
+    hardness_reference     方块 id；写了它就改用「该方块硬度」当上限（严格小于）。
+                           例如 "minecraft:obsidian" 让冲撞只能撞碎比黑曜石软的东西。
+                           写了这一项时 max_hardness 不再生效。
+    drop_blocks            破坏时是否掉落物品（默认 false = 直接消失）
+    allow_block_entities   是否允许破坏带方块实体的方块，如箱子/机器（默认 false）
+    allow_blocks           方块 id 列表，显式允许，会越过硬度上限
+    allow_tags             方块标签列表，显式允许，会越过硬度上限
+    protected_blocks       方块 id 列表，永不破坏（最高优先级）
+    protected_tags         方块标签列表，永不破坏（默认含 #spiderqueen_hungrycraft:beast_protected）
+  随包默认值（节选）：
+    transform_clearance  max_hardness 3.0，allow_tags：logs / planks / leaves / beast_fragile
+    body_crush           max_hardness 0.2，allow_tags：logs / leaves / beast_fragile
+    stomp                max_hardness 1.0，allow_tags：dirt / logs / leaves / beast_fragile
+    charge               hardness_reference minecraft:obsidian，drop_blocks true，
+                         allow_block_entities true
+  提示：想「让巨蛛能拆任何东西但保住主城」，就把 protected_tags 指向你自己写的标签，
+  再把 protected_blocks 加上特定方块；想「让巨蛛连黑曜石都能撞碎」，把 charge 档的
+  hardness_reference 换成更硬的方块（例如 minecraft:bedrock 会让它几乎无敌，慎用）。
+
+English:
+  Location: the "block_breaking" section of tuning.json. Four profiles, one per ability:
+    · transform_clearance  clears a space while transforming
+    · body_crush           crushes small obstacles while simply walking
+    · stomp                the landing stomp
+    · charge               the high speed charge
+  Keys of every profile (all optional, missing keeps the built-in default):
+    max_hardness           hardness limit, <= this value may be broken
+    hardness_reference     a block id; when present, that block's hardness is the limit
+                           (strictly less). Example: "minecraft:obsidian" makes a charge
+                           break everything softer than obsidian. max_hardness is then
+                           ignored.
+    drop_blocks            whether broken blocks drop items (default false, meaning the
+                           blocks simply vanish)
+    allow_block_entities   whether blocks with a block entity (chests, machines) may be
+                           broken (default false)
+    allow_blocks           list of block ids that are always allowed, above the limit
+    allow_tags             list of block tags that are always allowed, above the limit
+    protected_blocks       list of block ids that are never broken (highest priority)
+    protected_tags         list of block tags that are never broken (default includes
+                           #spiderqueen_hungrycraft:beast_protected)
+  Shipped defaults (excerpt):
+    transform_clearance  max_hardness 3.0, allow_tags logs / planks / leaves / beast_fragile
+    body_crush           max_hardness 0.2, allow_tags logs / leaves / beast_fragile
+    stomp                max_hardness 1.0, allow_tags dirt / logs / leaves / beast_fragile
+    charge               hardness_reference minecraft:obsidian, drop_blocks true,
+                         allow_block_entities true
+  Tips: to let the beast dig through everything while keeping your base safe, point
+  protected_tags at a tag of your own and add the specific blocks to protected_blocks.
+  To let a charge break obsidian as well, switch the charge profile's
+  hardness_reference to a harder block (minecraft:bedrock makes it almost unstoppable,
+  use with care).
+--------------------------------------------------------------------------------
+【6】人类装备表（低/中/高战备 Steve）（中文）
+--------------------------------------------------------------------------------
+文件：data/spiderqueen_hungrycraft/human_loadouts/default.json
+  · 只使用「一份」文件：优先取 mod 自带的 spiderqueen_hungrycraft:default；若它不存在，
+    则取找到的第一个文件。因此推荐做法是覆盖同名路径，这样你的表会整体替换掉 mod 的表。
+  · 真正被读取的三段：tiers、items、drop_rules。
+  · 当前版本「不会读取」的内容（只是文档性注释，改了不会改变游戏行为）：
+      schema_version、id、notes、selection_rules、drop_rules.looting_bonus_per_level、
+      以及 tiers.<档>.display_entity_name（实体名字来自语言文件
+      entity.spiderqueen_hungrycraft.{low,mid,high}_prepared_human）。
+  · tiers（三档固定键名）：low_prepared_human / mid_prepared_human / high_prepared_human
+      每档可写：
+        armor_budget{min,max}      护甲分数预算
+        weapon_budget{min,max}     武器分数预算
+        medicine_budget{min,max}   药品分数预算
+        empty_slot_chance{armor, melee_weapon, bow, shield}  各部位空手/空槽概率(0~1)
+      效果：预算越高，抽到的装备分数越高（越强）；空槽概率越高，越可能空手出场。
+      「缺失某一档」= 该档什么都不拿（日志会提示）。
+  · items（五类池子；armor 需要 slot，其余四类不需要）：
+        items.armor[]        每项：{ id, slot(head|chest|legs|feet), score, max_count?, weight{low,mid,high} }
+        items.shield[]       每项：{ id, score, max_count?, weight{low,mid,high} }
+        items.melee_weapon[] 同上
+        items.bow[]          同上
+        items.medicine[]     同上（默认只有金苹果）
+      score：用于与对应预算比较的分数。weight：该档抽到它的相对权重，0 = 该档不会出现。
+      id 写错会被跳过并写一条日志，其余项照常生效。
+  · drop_rules（死亡掉落）：
+        equipment_drop_chance   装备掉落概率(0~1)
+        medicine_drop_chance    药品掉落概率(0~1)
+        affected_by_looting     是否受抢夺附魔影响
+        drop_enchantments       掉落的装备是否带附魔
+        dropped_durability_remaining_percent{min,max}  掉落装备剩余耐久比例区间
+  · 整份表若不可用（没有档位或没有护甲池），会保留上一份表（服务器刚启动时＝内置默认），
+    不会把人类变成裸奔或让游戏出错。
+  · 想换皮肤/名字？那是资源与语言的事：lang 里 entity.spiderqueen_hungrycraft.*_prepared_human。
+--------------------------------------------------------------------------------
+【6-E】Human loadout table (Low / Mid / High Prepared Steve) (English)
+--------------------------------------------------------------------------------
+File: data/spiderqueen_hungrycraft/human_loadouts/default.json
+  · Exactly one file is used: the mod's own spiderqueen_hungrycraft:default is preferred;
+    when it is absent, the first file found is used. Overriding the same path is
+    therefore the recommended way: your table replaces the table of the mod.
+  · Only three sections are read: tiers, items, drop_rules.
+  · NOT read in this version (documentation only, changing them changes nothing):
+    schema_version, id, notes, selection_rules, drop_rules.looting_bonus_per_level and
+    tiers.<tier>.display_entity_name (entity names come from the language file keys
+    entity.spiderqueen_hungrycraft.{low,mid,high}_prepared_human).
+  · tiers, three fixed keys: low_prepared_human / mid_prepared_human / high_prepared_human
+      each tier accepts:
+        armor_budget{min,max}      armour score budget
+        weapon_budget{min,max}     weapon score budget
+        medicine_budget{min,max}   medicine score budget
+        empty_slot_chance{armor, melee_weapon, bow, shield}   chance of an empty slot (0~1)
+      Effect: a higher budget means the rolled gear scores higher, a higher empty slot
+      chance means the human more often shows up without that piece.
+      A missing tier gets nothing at all and is reported in the log.
+  · items, five pools. Only armor needs a slot, the other four do not:
+        items.armor[]        each: { id, slot(head|chest|legs|feet), score, max_count?, weight{low,mid,high} }
+        items.shield[]       each: { id, score, max_count?, weight{low,mid,high} }
+        items.melee_weapon[] same shape
+        items.bow[]          same shape
+        items.medicine[]     same shape (golden apple only by default)
+      score: compared against the matching budget. weight: relative roll weight for that
+      tier, 0 means the tier never rolls it. A wrong id is skipped with one log line
+      while the rest of the table keeps working.
+  · drop_rules (loot on death):
+        equipment_drop_chance   chance to drop a piece of gear (0~1)
+        medicine_drop_chance    chance to drop medicine (0~1)
+        affected_by_looting     whether Looting changes the chance
+        drop_enchantments       whether dropped gear keeps its enchantments
+        dropped_durability_remaining_percent{min,max}   remaining durability range
+  · If the whole table is unusable (no tiers or no armour pool) the previous table stays
+    (the built-in default right after server start). Humans never end up naked and the
+    game never fails to load.
+  · Skins and names are a resource / language matter: see
+    entity.spiderqueen_hungrycraft.*_prepared_human in the lang files.
+--------------------------------------------------------------------------------
+【7】人类刷新与村庄驻军（中文）
+--------------------------------------------------------------------------------
+文件：data/spiderqueen_hungrycraft/human_spawns/default.json
+  · 只使用一份文件（优先 mod 自带的 default，否则取找到的第一个）→ 覆盖同名路径最稳妥。
+  · 顶层：
+        enabled          总开关（默认 true）。关掉后地表巡逻与村庄驻军都不再生成。
+    natural_surface（地表巡逻刷新）：
+        enabled                  该部分开关（默认 true）
+        dimensions               允许刷新的维度 id 列表；留空则默认 minecraft:overworld
+        attempt_interval_ticks   每隔多少 tick 尝试一次（自带默认 20，即每秒一次）
+        day_spawn_chance         白天每次尝试成功概率（自带默认 0.7）
+        night_spawn_chance       夜晚每次尝试成功概率（自带默认 0.2）
+        day_target_population    白天玩家周围「环带」内的目标人类数（自带默认 32；0 = 不设目标）
+        night_target_population  夜晚玩家周围「环带」内的目标人类数（自带默认 8；0 = 不设目标）
+                                 环带 = min_distance_from_player ~ max_distance_from_player。
+                                 环带内达到该人数后本次尝试直接跳过，人少于该值才会补人。
+                                 白天的「人多」与夜晚的「人少」由这两个数字决定，概率只决定补满得多快；
+                                 所以即使幸存者被杀死、被赶走，密度最终也会回到这里写的值。
+        min_distance_from_player 与玩家最小距离（自带默认 24）
+        max_distance_from_player 与玩家最大距离（自带默认 72；调大 = 视野外也有人，但更难看到）
+        per_chunk_human_cap      每个区块的人类上限（自带默认 1；这就是「分散到不同区块」的保证）
+        local_radius_cap{enabled,radius,max_humans}  局部半径内的上限（自带默认开，48 格内最多 32）
+                                 这是防「扎堆」的保险丝，不是密度主开关：把 target 调高时请一起调高它，
+                                 否则它会先一步挡住刷新。
+        surface_only             仅地表（默认 true）
+        must_see_sky             必须见天空（默认 true）
+        ground_must_be_full_block 脚下必须是完整方块（默认 true）
+        forbidden_ground_block_tags  不能站的地面方块标签；minecraft:leaves 永远包含
+        tier_weights[]           权重表：[{entity: 实体id, weight: 整数}]
+                                 默认低 60 / 中 30 / 高 10；写未知实体 id 会被跳过并记日志
+        forbidden_entities[]     永不由本系统刷出的实体 id（默认 chad_steve）
+    village_garrison（村庄一次性驻军）：
+        enabled                          开关（默认 true）
+        once_per_village                 每个村庄只驻军一次（默认 true）
+        high_prepared_human_count{min,max}  高战备数量区间（默认 2~3）
+        chad_steve_count                 高人史蒂夫数量（默认 1）
+        try_to_keep_one_human_per_chunk  尽量每区块只留一个（默认 true）
+        spawn_chad_first                 先刷高人史蒂夫（默认 true）
+        valid_position_rules_same_as_surface  位置规则同地表（默认 true）
+        check_interval_ticks             村庄检查间隔（默认 100）
+        chunks_checked_per_player        每个玩家每次检查的区块数（默认 4）
+        position_search_radius           位置搜索半径（默认 32）
+        village_poi_radius               村庄兴趣点半径（默认 48）
+  · 效果举例：觉得夜晚太冷清，把 night_target_population 提到 16（顺手把 night_spawn_chance 提到 0.3，
+    否则要等一会儿才填满）；觉得夜晚还是太热闹就把它降到 3。
+    想关掉村庄驻军只留野外巡逻，把 village_garrison.enabled 设为 false。
+  · 文件缺失/损坏时：保留上一份规则（首次启动即内置默认），日志里会有 [Spawn] 开头的提示。
+  · 与本 mod 的其它人类（人类战斗员、高人史蒂夫）不同：它们由命令/刷怪蛋/结构放置，
+    不走这套刷新规则。
+--------------------------------------------------------------------------------
+【7-E】Human spawns and the village garrison (English)
+--------------------------------------------------------------------------------
+File: data/spiderqueen_hungrycraft/human_spawns/default.json
+  · Exactly one file is used (the mod's default is preferred, otherwise the first file
+    found), so overriding the same path is the safest way.
+  · Top level:
+        enabled          master switch (default true). When off, neither surface patrols
+                         nor village garrisons spawn.
+    natural_surface (surface patrol spawner):
+        enabled                  switch of this part (default true)
+        dimensions               dimension ids to spawn in; empty means minecraft:overworld
+        attempt_interval_ticks   one attempt every N ticks (shipped default 20, i.e. once a second)
+        day_spawn_chance         success chance per attempt, day (shipped default 0.7)
+        night_spawn_chance       success chance per attempt, night (shipped default 0.2)
+        day_target_population    humans the spawner aims at inside the ring, day (shipped default 32)
+        night_target_population  humans the spawner aims at inside the ring, night (shipped default 8)
+                                 The ring is min_distance_from_player .. max_distance_from_player.
+                                 While the ring holds that many humans the attempt is dropped, while it
+                                 holds fewer the spawner tops it up. These two numbers, and not the
+                                 chances, decide how full the day is and how thin the night is: the
+                                 chances only decide how fast the ring is filled, so the density comes
+                                 back to what is written here even after the survivors were killed or
+                                 chased off. 0 means "no target", the caps are then the only limit.
+        min_distance_from_player (shipped default 24)
+        max_distance_from_player (shipped default 72; larger = survivors also beyond the view, harder to
+                                 see)
+        per_chunk_human_cap      humans per chunk (shipped default 1)
+        local_radius_cap{enabled,radius,max_humans}  local cap (shipped default on, 32 within 48)
+                                 This is the anti pile-up fuse and not the density knob: raise it
+                                 together with the target, or it will be the one that stops the spawns.
+        surface_only             surface only (default true)
+        must_see_sky             must see the sky (default true)
+        ground_must_be_full_block  the ground must be a full block (default true)
+        forbidden_ground_block_tags  ground tags that never carry a human; the vanilla
+                                     leaf tag is always included
+        tier_weights[]           weight table: [{entity: <entity id>, weight: <int>}]
+                                 default low 60 / mid 30 / high 10; an unknown entity id
+                                 is skipped with one log line
+        forbidden_entities[]     entity ids this spawner never creates (default chad_steve)
+    village_garrison (one time village garrison):
+        enabled                          switch (default true)
+        once_per_village                 garrison a village once (default true)
+        high_prepared_human_count{min,max}  how many high prepared humans (default 2~3)
+        chad_steve_count                 how many Chad Steves (default 1)
+        try_to_keep_one_human_per_chunk  default true
+        spawn_chad_first                 spawn Chad Steve first (default true)
+        valid_position_rules_same_as_surface  reuse the surface position rules (default true)
+        check_interval_ticks             village check interval (default 100)
+        chunks_checked_per_player        chunks checked per player per pass (default 4)
+        position_search_radius           search radius (default 32)
+        village_poi_radius               village point of interest radius (default 48)
+  · Examples: too few humans at night, raise night_target_population to 16 (and night_spawn_chance to
+    0.3, otherwise the ring takes a while to fill); still too many for a night, lower it to 3.
+    Want to keep the wilderness patrols but drop the garrison, set
+    village_garrison.enabled to false.
+  · A missing or broken file keeps the previous rules (the built-in default right after
+    start) and writes a [Spawn] line to the log.
+  · The other humans of this mod (the human combatant and Chad Steve) are placed by
+    commands, spawn eggs and structures; they do not use this spawner.
+--------------------------------------------------------------------------------
+【8】胃袋维度 与 伤害类型 / The Stomach dimension and the damage types
+--------------------------------------------------------------------------------
+中文：
+  8.1 胃袋维度（三个文件一起构成了它，改完需要重进世界或重启）
+      · data/spiderqueen_hungrycraft/dimension/stomach.json
+        默认：minecraft:flat 生成器 + 生物群系 spiderqueen_hungrycraft:stomach，
+        无湖、无地形特征、无结构。改这里的 biome 可以换掉胃袋的生物群系。
+      · data/spiderqueen_hungrycraft/dimension_type/stomach.json
+        默认：ambient_light 0.12、fixed_time 18000（永远午夜）、无天光、无天花板、
+        coordinate_scale 1.0、床不可用、重生锚不可用、无袭击、min_y -64 / height 384、
+        effects = minecraft:the_end（终界天空与雾）、piglin_safe true、
+        自然刷新相关两项为 0（本维度不刷怪）。
+        效果：胃袋里永远是黑夜、没有天空光、空气偏暗、床与重生锚无效。
+      · data/spiderqueen_hungrycraft/worldgen/biome/stomach.json
+        默认：雾/天空/水的颜色、环境音 minecraft:ambient.cave、特征列表为空、
+        所有 spawners 列表为空。效果：胃袋生物群系不会自己刷任何生物。
+      · 注意：胃袋内部的"小隔间"结构由代码生成（不在这三个文件里）。
+  8.2 伤害类型（data/spiderqueen_hungrycraft/damage_type/*.json，共 5 个）
+      · beast_bite / beast_charge / beast_stomp：巨蛛真身的三段攻击。
+        message_id 对应语言键 death.attack.beast_bite 等；exhaustion 0.1 表示命中会
+        增加饥饿消耗；scaling 为 when_caused_by_living_non_player。
+      · stomach_link / stomach_swallowed：胃袋的关联伤害与吞没伤害。
+        默认 exhaustion 0、scaling never。
+      · 想改死亡提示文本：改 lang 文件里的 death.attack.<message_id>，不是改这里。
+  8.3 让胃袋伤害无视减免（data/minecraft/tags/damage_type/bypasses_*.json，共 5 个）
+      默认把 stomach_link 与 stomach_swallowed 加进 bypasses_armor / bypasses_cooldown /
+      bypasses_enchantments / bypasses_resistance / bypasses_shield。
+      效果：胃袋的这两类伤害不吃护甲、不吃无敌帧、不吃保护类魔咒、不吃抗性提升、不吃盾。
+      改法：往 values 里加你自己的伤害类型 id（记得 "replace": false），即可让该伤害
+      同样无视这些减免。
+  8.4 巨蛛攻击集合（data/spiderqueen_hungrycraft/tags/damage_type/beast_attacks.json）
+      作用：标记"哪些伤害算作女王的主动攻击"，用于惊动敌人/触发敌对。
+      默认包含 beast_bite、beast_stomp、beast_charge；女王的投掷物伤害天生也算（代码里
+      是 IS_PROJECTILE 标签），所以你不必把它们写进来。
+--------------------------------------------------------------------------------
+【8-E】The Stomach dimension and the damage types (English)
+--------------------------------------------------------------------------------
+  8.1 The Stomach dimension is built from three files. Changing them needs a world
+      re-enter or a game restart.
+      · data/spiderqueen_hungrycraft/dimension/stomach.json
+        Default: a minecraft:flat generator with the biome
+        spiderqueen_hungrycraft:stomach, no lakes, no features, no structures.
+        Changing the biome here changes the biome of the Stomach.
+      · data/spiderqueen_hungrycraft/dimension_type/stomach.json
+        Default: ambient_light 0.12, fixed_time 18000 (always midnight), no sky light,
+        no ceiling, coordinate_scale 1.0, beds disabled, respawn anchors disabled, no
+        raids, min_y -64 / height 384, effects minecraft:the_end (end sky and fog),
+        piglin_safe true, both natural spawn light limits 0 (nothing spawns by itself).
+        Effect: the Stomach is always dark night, has no sky light, uses the End look,
+        and beds and respawn anchors do not work there.
+      · data/spiderqueen_hungrycraft/worldgen/biome/stomach.json
+        Default: fog, sky and water colours, the mood sound minecraft:ambient.cave, an
+        empty feature list and empty spawner lists. Effect: the Stomach biome spawns
+        nothing on its own.
+      · The inner rooms of a stomach are generated by code and are not part of these
+        three files.
+  8.2 Damage types (data/spiderqueen_hungrycraft/damage_type/*.json, 5 files)
+      · beast_bite / beast_charge / beast_stomp: the three attacks of the Queen Beast.
+        message_id points at the language keys death.attack.beast_bite and so on,
+        exhaustion 0.1 adds hunger cost on hit, scaling is
+        when_caused_by_living_non_player.
+      · stomach_link / stomach_swallowed: the linked damage and the swallowing damage of
+        a stomach. Defaults: exhaustion 0, scaling never.
+      · To rename the death messages, edit the lang files
+        (death.attack.<message_id>), not these files.
+  8.3 Stomach damage bypasses (data/minecraft/tags/damage_type/bypasses_*.json, 5 files)
+      Default: stomach_link and stomach_swallowed are added to bypasses_armor,
+      bypasses_cooldown, bypasses_enchantments, bypasses_resistance and
+      bypasses_shield.
+      Effect: those two damage sources ignore armour, invulnerability frames, protection
+      enchantments, resistance and shields.
+      Add your own damage type ids to the values (keep "replace": false) to give them
+      the same treatment.
+  8.4 Beast attack set (data/spiderqueen_hungrycraft/tags/damage_type/beast_attacks.json)
+      Purpose: which damage types count as an offensive hit of the queen, which is what
+      wakes up enemies and triggers hostility.
+      Default: beast_bite, beast_stomp, beast_charge. Queen projectiles already count
+      through the vanilla IS_PROJECTILE tag, so you do not have to list them.
+--------------------------------------------------------------------------------
+【9】标签手册（中文）/ Tag handbook (English in section 9-E)
+--------------------------------------------------------------------------------
+所有标签都在你自己的数据包里用同名路径覆盖，写法都是标准原版标签格式：
+  { "replace": false, "values": [ "minecraft:cobweb", "#minecraft:logs",
+    { "id": "一些mod:方块", "required": false } ] }
+  · replace: false → 追加（默认）；replace: true → 整体替换掉 mod 的默认内容。
+  · required: false → 该条目/模组不存在时不报错（跨模组兼容必用）。
+
+A. 方块标签 data/spiderqueen_hungrycraft/tags/blocks/
+   1) web_blocks       视为"蛛网"的方块。默认：cobweb + 三种女王蛛网 + 蜘蛛床。
+                       效果：女王在其中按蛛网规则移动；女王挖掉时掉落 4~6 个线
+                       （蜘蛛床例外，它的掉落表不变）。把方块加进来即可让女王
+                       "把该方块当网处理"。
+   2) beast_fragile    巨蛛顺手撕碎的方块。默认：玻璃系/树叶/花草/作物/cobweb/
+                       藤蔓/火把/灯笼/干草块/脚手架等。
+                       效果：被打碎时不看硬度上限（tuning 的 allow_tags 默认引用它）。
+   3) beast_protected  巨蛛永不破坏的方块。默认：基岩/屏障/光源/命令方块/结构方块/
+                       传送门/强化深板岩/刷怪笼/紫水晶母岩等。
+                       效果：任何能力都不会破坏它（tuning 的 protected_tags 默认引用它）。
+   4) spider_bed_frame 蜘蛛床仪式的 16 个框架方块。默认 #minecraft:logs（任意原木）。
+                       效果：5x5 的仪式框架换材料（例如石头墙基）；清空该标签 =
+                       仪式无法成立（也就做不出蜘蛛床）。
+
+B. 实体标签 data/spiderqueen_hungrycraft/tags/entity_types/
+   1) spider_like       蜘蛛类。默认：蜘蛛、洞穴蜘蛛。
+                        效果：免疫蛛网效果、永不可被捕获；也被 web_immune 默认引用。
+   2) web_immune        完全无视"蛛丝缠绕(Webbed)"。默认：#spiderqueen_hungrycraft:spider_like。
+                        效果：把任意生物加进来，它就免疫蛛丝缠绕的减速与层数。
+   3) uncapturable      永不可被捕获。默认：末影龙、凋零、监守者、远古守卫者。
+   4) force_capturable  让"不是 Mob 的 LivingEntity"也能被捕获的白名单。默认：空。
+   5) neutral_to_spider_queen        平时不主动攻击蜘蛛女王。默认：僵尸/尸壳/溺尸/
+                        僵尸村民/骷髅/流浪者/苦力怕/蜘蛛/洞穴蜘蛛。
+   6) always_hostile_to_spider_queen 即使在上面的名单里也永远敌对。默认：女巫/掠夺者/
+                        卫道士/唤魔者/劫掠兽/幻术师/恼鬼/猪灵/猪灵蛮兵/疣猪兽/
+                        远古守卫者/监守者/凋零/末影龙。
+   7) village_defenders 会被授权主动猎杀女王的"村庄武力"。默认：铁傀儡，
+                        以及可选的 guardvillagers:guard、irons_spellbooks:priest
+                        （required:false，没装也不报错）。普通村民不会变成士兵。
+   8) 阵营标签（同时命中多个时优先级：no_faction > queen_faction > human_faction >
+      village_faction > illager_faction > nether_fortress_faction > piglin_faction >
+      monster_faction > 无阵营）：
+        human_faction            站在人类一边（默认：chad_steve 与三种战备 Steve、人类战斗员）
+        village_faction          站在村庄一边（默认：村民、铁傀儡、流浪商人、可选 guardvillagers:guard）
+        illager_faction          灾厄村民阵营（默认：女巫、掠夺者、卫道士、唤魔者、幻术师、劫掠兽、恼鬼）。
+                                 对女王 / 人类 / 村庄敌对
+        nether_fortress_faction  下界堡垒阵营（默认：烈焰人、恶魂、凋灵骷髅、岩浆怪）。
+                                 对女王 / 人类 / 村庄敌对
+        piglin_faction           猪灵生态阵营（默认：猪灵、猪灵蛮兵、僵尸猪灵、疣猪兽、僵尸疣猪兽）。
+                                 对本 mod 阵营只对女王中立，其余一律不表态（PASS_THROUGH），
+                                 一切交给它们自己的原版 AI
+        monster_faction          主世界常规怪物（默认：僵尸系、骷髅系、蜘蛛系、苦力怕、史莱姆、
+                                 末影人 / 末影螨、蠹虫）。注意：它不是"所有继承 Monster 的生物"
+        queen_faction            女王一方（默认空，预留给未来的"虫群"）
+        no_faction               完全没有阵营，不参与任何阵营逻辑（默认空）
+      注意 1：玩家永远不由标签决定阵营，而由"蜘蛛女王能力"决定。
+      注意 2：没有被任何阵营标签点名的怪物（监守者、凋零、末影龙、潜影贝、守卫者、远古守卫者、
+              幻翼，以及其它模组的怪物）默认没有任何阵营，本 mod 不替它们决定要不要打女王，
+              它们自己的原版 AI 也不会被本 mod 阻止。
+      注意 3：人类与村庄守卫仍然会把"没有阵营的常规敌对怪物"（原版或其它模组的 Monster /
+              MobCategory.MONSTER）当敌人，但 no_faction 里的实体除外。
+      注意 4：always_hostile_to_spider_queen 只是 monster_faction 的修饰标签：把某个
+              monster_faction 里的生物放进去，它才主动敌对女王。illager_faction 与
+              nether_fortress_faction 天然敌对，不需要这个标签；piglin_faction 永远中立。
+   9) 女王阵营（queen_faction）与女王虫群（Queen Colony）是两层，不要混：
+        - queen_faction 是【静态阵营标签】：表示"蜘蛛女王体系"这一大类。永远不要为每个
+          玩家做动态阵营（不要 queen_faction_<uuid> 之类），不要在运行时改 JSON，
+          FactionId 永远是静态大类。
+        - OwnerUUID / ColonyId 是【动态归属】：ColonyId = 该单位所属蜘蛛女王的 UUID。
+          * 蜘蛛女王玩家：ColonyId = 该玩家自己的 UUID
+          * 蜘蛛小弟（实现 QueenOwnedEntity 的单位，如小鬼蜘蛛 / 子嗣蜘蛛）：
+            ColonyId = 它的 OwnerUUID
+          * 其它实体：完全没有 ColonyId
+        - 只有同一个 ColonyId 才算友军（QueenColonyRelations.isSameColony /
+          isQueenSideFriendly）。
+        - 不同 ColonyId 的 Queen 方单位：本框架既不判友军、也不判敌人，
+          以后由 PvP / 女王权杖 / 仇恨状态 / 服务器规则决定。
+        - 所以 queen_faction 内部【不是】"永远全部互为友军"：矩阵里 QUEEN vs QUEEN 是
+          PASS_THROUGH（不表态），友军判断交给 Colony 层。
+      以后把一个小蜘蛛接入女王阵营时，必须同时满足：
+        1) 加入 #spiderqueen_hungrycraft:spider_like
+        2) 加入 #spiderqueen_hungrycraft:queen_faction
+        3) 实体自身保存 OwnerUUID
+        4) 实现接口 spiderqueenhungrycraft.faction.QueenOwnedEntity#getQueenOwnerUUID
+      现在的小鬼蜘蛛 / 子嗣蜘蛛已经保存 OwnerUUID（NBT 键 MinionOwner）并实现了该接口，
+      但本轮【没有】把它们放进 queen_faction（它们目前仍是"无阵营"）。
+      重要：加入 queen_faction 不代表"所有小蜘蛛互为友军"——只有同 OwnerUUID 才是友军。
+
+C. 物品标签 data/spiderqueen_hungrycraft/tags/items/
+   1) poison_web_trigger_foods  吃了会触发"毒蛛丝强化"的食物。
+      默认：河豚、毒马铃薯、蜘蛛眼。把别的食物加进来，吃它也会进入毒蛛丝强化。
+
+D. 伤害类型标签：见第 8.4 节（beast_attacks）。
+--------------------------------------------------------------------------------
+【9-E】Tag handbook (English)
+--------------------------------------------------------------------------------
+Override any tag with the same path in your own datapack. All of them use the vanilla
+format:
+  { "replace": false, "values": [ "minecraft:cobweb", "#minecraft:logs",
+    { "id": "some_mod:block", "required": false } ] }
+  · replace: false appends (default), replace: true replaces the whole list of the mod.
+  · required: false keeps a missing mod from breaking the tag.
+
+A. Block tags, data/spiderqueen_hungrycraft/tags/blocks/
+   1) web_blocks       Blocks treated as webs. Default: cobweb, the three queen webs and
+                       the spider bed. Effect: the queen moves in them by web rules, and
+                       when she breaks one it drops 4~6 string (the spider bed is
+                       excluded, its own loot table stays). Add a block to treat it as a
+                       web as well.
+   2) beast_fragile    Blocks the beast tears off easily. Default: glass family, leaves,
+                       flowers, crops, cobweb, vines, torches, lanterns, hay, scaffolding.
+                       Effect: broken without asking the hardness limit (the tuning file
+                       references this tag in allow_tags).
+   3) beast_protected  Blocks the beast never breaks. Default: bedrock, barrier, light,
+                       command blocks, structure blocks, portals, reinforced deepslate,
+                       spawner, budding amethyst. Effect: no ability can break them
+                       (referenced by protected_tags in the tuning file).
+   4) spider_bed_frame The 16 frame blocks of the spider bed ritual. Default
+                       #minecraft:logs. Effect: change what the 5x5 frame is made of; an
+                       empty tag means the ritual can never be built, so no spider bed.
+
+B. Entity tags, data/spiderqueen_hungrycraft/tags/entity_types/
+   1) spider_like       Spiders. Default: spider, cave spider. Effect: immune to the Webbed
+                        effect and never capturable; also referenced by web_immune.
+   2) web_immune        Ignores the Webbed effect entirely. Default: the spider_like tag.
+                        Add any creature to make it immune to web slowing and stacks.
+   3) uncapturable     Never capturable. Default: ender dragon, wither, warden, elder
+                        guardian.
+   4) force_capturable Opt in for living entities that do not extend Mob. Default: empty.
+   5) neutral_to_spider_queen         Does not attack the Spider Queen on its own.
+                        Default: zombie, husk, drowned, zombie villager, skeleton, stray,
+                        creeper, spider, cave spider.
+   6) always_hostile_to_spider_queen  Stays hostile even when listed above. Default:
+                        witch, pillager, vindicator, evoker, ravager, illusioner, vex,
+                        piglin, piglin brute, hoglin, elder guardian, warden, wither,
+                        ender dragon.
+   7) village_defenders The fighting part of a village, allowed to hunt the queen.
+                        Default: iron golem plus the optional guardvillagers:guard and
+                        irons_spellbooks:priest (required:false). A plain villager never
+                        becomes a soldier.
+   8) The faction tags. When a type matches several, the priority is
+      no_faction > queen_faction > human_faction > village_faction > illager_faction >
+      nether_fortress_faction > piglin_faction > monster_faction > no faction at all:
+        human_faction            Chad Steve, the three prepared Steves, the human combatant
+        village_faction          villagers, iron golems, wandering traders, optional guards
+        illager_faction          the raiders (witch, pillager, vindicator, evoker, illusioner,
+                                 ravager, vex); hostile to the queen, humans and villages
+        nether_fortress_faction  blaze, ghast, wither skeleton, magma cube; hostile to the queen,
+                                 humans and villages
+        piglin_faction           piglin, piglin brute, zombified piglin, hoglin, zoglin; neutral
+                                 towards the queen and pass through everywhere else, so their own
+                                 vanilla AI keeps deciding every fight of theirs
+        monster_faction          the ordinary overworld monsters (zombies, skeletons, spiders,
+                                 creeper, slime, enderman, endermite, silverfish). Note that this
+                                 is not "everything that extends Monster"
+        queen_faction            empty by default, reserved for a future brood
+        no_faction               no faction at all, takes part in nothing (empty by default)
+      Note 1: the player is never classified by a tag; the queen capability decides that.
+      Note 2: a monster that no faction tag names (warden, wither, ender dragon, shulker, guardian,
+              elder guardian, phantom, every mob of another mod) has no faction at all, so this mod
+              never decides for it whether it fights the queen and never suppresses its own AI.
+      Note 3: humans and village defenders still treat an unaffiliated hostile monster of the vanilla
+              game or of another mod (Monster or MobCategory.MONSTER) as an enemy - unless the type
+              is in no_faction.
+      Note 4: always_hostile_to_spider_queen is only a modifier of monster_faction: put a
+              monster_faction entry into it and that creature hunts the queen. The illager and nether
+              fortress factions are hostile on their own and never need it, and the piglin ecology
+              stays neutral no matter what.
+   9) The queen faction (queen_faction) and the queen colony (Queen Colony) are two layers:
+        - queen_faction is the STATIC faction tag: the Spider Queen system as a whole. Never make
+          a dynamic faction per player (no queen_faction_<uuid>), never rewrite the JSON at
+          runtime: FactionId stays a fixed list of big categories.
+        - OwnerUUID / ColonyId is the DYNAMIC belonging: the colony of a creature is the UUID of
+          its Spider Queen.
+          * Spider Queen player: ColonyId = that player's own UUID
+          * Spider minion (anything implementing QueenOwnedEntity, e.g. imp spider / brood
+            spider): ColonyId = its OwnerUUID
+          * anything else: no ColonyId at all
+        - Only the same ColonyId is friendly (QueenColonyRelations.isSameColony /
+          isQueenSideFriendly).
+        - Two queen side entities of different colonies are neither friends nor enemies here:
+          that verdict is left to PvP rules, the future queen sceptre, the revenge memory or a
+          server rule.
+        - The inside of queen_faction is therefore NOT "always all friendly": QUEEN vs QUEEN is
+          PASS_THROUGH in the matrix, and the colony layer answers who is a friend.
+      Wiring a new spider into the queen side always needs all four of:
+        1) it is in #spiderqueen_hungrycraft:spider_like
+        2) it is in #spiderqueen_hungrycraft:queen_faction
+        3) the entity stores an OwnerUUID itself
+        4) it implements spiderqueenhungrycraft.faction.QueenOwnedEntity#getQueenOwnerUUID
+      The current imp spider / brood spider already store the owner (NBT key MinionOwner) and
+      already implement that interface, but this round did NOT put them into queen_faction: they
+      are still without a faction. And being in queen_faction never means "all minions are
+      friends" - only the same owner UUID is.
+
+C. Item tags, data/spiderqueen_hungrycraft/tags/items/
+   1) poison_web_trigger_foods  Food that triggers the poison web empowerment.
+      Default: pufferfish, poisonous potato, spider eye. Add more to empower on them too.
+
+D. Damage type tags: see section 8.4 (beast_attacks).
+--------------------------------------------------------------------------------
+【10】战利品与资源包（中文）
+--------------------------------------------------------------------------------
+10.1 方块掉落表（data/spiderqueen_hungrycraft/loot_tables/blocks/，共 5 个）
+    · queen_web.json        默认：pools 为空 → 不掉落任何东西。（女王挖它时会被下面的
+                            全局修改器替换成 4~6 个线；普通玩家挖就是什么都没有。）
+    · fire_queen_web.json   默认：1 个 minecraft:string（带 survives_explosion 条件）
+    · poison_queen_web.json 默认：同火焰蛛网
+    · spider_bed.json       默认：掉落蜘蛛床本身，但需要工具带精准采集(silk_touch)；
+                            否则什么都不掉。
+    · territory_core.json   默认：掉落领地核心本身（带 survives_explosion）。
+    改法：标准原版战利品表格式。例如把某一种蛛网改成掉 2~4 个线：
+      "rolls": 1.0 且 entries 里用 "type": "minecraft:item", "name": "minecraft:string",
+      functions: [ { "function": "minecraft:set_count",
+                     "count": { "type": "minecraft:uniform", "min": 2, "max": 4 } } ]
+10.2 全局战利品修改器（女王采网）
+    · data/spiderqueen_hungrycraft/loot_modifiers/queen_web_harvest.json
+      内容只有 type 与 conditions。效果：当蜘蛛女王破坏 #spiderqueen_hungrycraft:web_blocks
+      里的方块时（蜘蛛床除外），原版掉落被整体丢弃，改为掉落 4~6 个线。其它玩家不受影响。
+    · 线数 4~6 写死在代码里，json 改不了；能改的是「启用条件」：
+      在 conditions 里加任意原版战利品条件即可限定它的生效范围。例如加
+        { "condition": "minecraft:random_chance", "chance": 0.0 }
+      就可以把它彻底关掉（永远不成立）。
+    · data/forge/loot_modifiers/global_loot_modifiers.json 只是把上面那个修改器登记进
+      全局列表（Forge 会合并各家的同名文件）。一般不需要动它；如果动了，务必保留
+      "replace": false，以免把其它模组的全局修改器一起抹掉。
+10.3 资源包侧（assets/spiderqueen_hungrycraft/，只影响外观与文本，不影响平衡）
+    · lang/zh_cn.json、lang/en_us.json：所有名称与提示。想加一门语言就新增
+      lang/<locale>.json（例如 ja_jp.json），键照抄 en_us.json 即可。
+      包含：方块名 block.*、物品名 item.*、实体名 entity.*、效果 effect.*、消息 message.*、
+      死亡提示 death.attack.*、按键 key.*、提示 tooltip.*、HUD hud.*。
+    · blockstates/*.json、models/block/*.json、models/item/*.json：方块/物品外观。
+      物品里的刷怪蛋默认用 minecraft:item/template_spawn_egg（蛋的颜色由代码定义，不能改）。
+    · particles/*.json：粒子使用的贴图列表。默认用原版 minecraft:generic_0..7，
+      想换成自定义贴图就写自己的 textures 列表（然后在资源包里放对应 PNG）。
+    · sounds.json：音效定义。默认只有 stomach_rumble（用本 mod 自带的 ogg，stream: true）。
+      可以自定义 volume / pitch / attenuation_distance，或换成自己的音效文件。
+    · 贴图路径：textures/block/spider_bed.png、textures/item/cocoon.png、
+      textures/entity/chad_steve.png、textures/entity/cocoon.png、
+      textures/gui/beast_vision_overlay.png、textures/mob_effect/day_vision.png、
+      textures/mob_effect/light_sensitivity.png。
+      注意：女王蛛网与领地核心直接复用原版 minecraft:block/cobweb，所以它们没有自己的 PNG；
+      想换外观就在资源包里覆盖 blockstates/models 指向你自己的贴图。
+
+10.4 灵魂容器规则（Soul Consumable round，data/spiderqueen_hungrycraft/soul_loot/，共 3 个文件）
+    · container_weights.json：每个容器开出几个灵魂的权重，0~4 共五项。
+        "count_weights": [2, 38, 30, 20, 10]      ← 依次是 0/1/2/3/4 个的权重
+      默认：98% 的容器至少有 1 个，平均约 1.98 个。把某个数字改成 0 就等于那个数量不可能出现；
+      写成 [100, 0, 0, 0, 0] 等于整个功能关闭（不用改代码）。
+    · structure_families.json：canonical 家族表。每条写 family（十五种之一）、soul（这个家族给
+      哪种灵魂）、structures（结构 ID 列表）、structure_tags（结构标签）。家族是「这个结构是
+      什么」而不是「它在哪里」：丛林版本的下界要塞仍然是 nether_fortress，末地版本的矿井仍然
+      是 mineshaft。家族在文件中的先后顺序就是重叠时的优先级——写在越前面越优先。
+    · loot_tables.json：战利品表别名 + 拒绝表。别名有三种用法：
+        1) 没有结构能认领这个容器时，由它来定家族（例如 minecraft:chests/simple_dungeon
+           → dungeon：怪物房不是注册结构，只能靠战利品表认出来）；
+        2) 与结构给出的家族一致时，用它细分档位（村庄 smith、沉船 treasure、堡垒 treasure）；
+        3) 与结构给出的家族不一致时完全忽略——结构永远优先。
+      ignored_loot_tables 里的表永远不给灵魂，即使它所在的结构会给（默认列了丛林神庙发射器
+      与 Repurposed Structures 的 dispenser 系列）。
+    · 三个文件会合并（按文件名排序，后写的覆盖同名键），所以整合包只要新增一个
+      soul_loot/xxx.json 就能给别的结构模组加别名，不必复制本 mod 的文件。
+    · 判定顺序：结构上下文 → family，战利品表只负责细分或补漏，最后由 family 给灵魂。一个容器
+      最多追加 ONE 个 ItemStack（数量 1~4），绝不会占掉多个格子。
+    · 兼容全部是可选的：repurposed_structures:* 与 better*:* 只是字符串，没装那些模组时永远
+      匹配不到——游戏照常启动、照常跑 GameTest、原版箱子照常刷新。
+
+--------------------------------------------------------------------------------
+【10-E】Loot and the resourcepack side (English)
+--------------------------------------------------------------------------------
+10.1 Block loot tables (data/spiderqueen_hungrycraft/loot_tables/blocks/, 5 files)
+    · queen_web.json        Default: an empty pools list, so it drops nothing. (When the
+                            queen breaks it, the global modifier below turns that into
+                            4~6 string; a normal player simply gets nothing.)
+    · fire_queen_web.json   Default: 1 minecraft:string (with survives_explosion)
+    · poison_queen_web.json Default: same as the fire web
+    · spider_bed.json       Default: the spider bed itself, but the tool must carry
+                            Silk Touch, otherwise nothing drops.
+    · territory_core.json   Default: the territory core itself (survives_explosion).
+    Editing is plain vanilla format. To make a web drop 2~4 string, use
+      entries: [ { "type": "minecraft:item", "name": "minecraft:string",
+        "functions": [ { "function": "minecraft:set_count",
+          "count": { "type": "minecraft:uniform", "min": 2, "max": 4 } } ] } ]
+10.2 The global loot modifier (queen web harvest)
+    · data/spiderqueen_hungrycraft/loot_modifiers/queen_web_harvest.json holds only a
+      type and a conditions list. Effect: when the Spider Queen breaks a block of
+      #spiderqueen_hungrycraft:web_blocks (the spider bed excluded), the vanilla drops
+      are discarded and 4~6 string appear instead. Other players are untouched.
+    · The amount 4~6 is hardcoded; what you can change are the conditions. Adding
+        { "condition": "minecraft:random_chance", "chance": 0.0 }
+      disables the modifier completely (it can never pass).
+    · data/forge/loot_modifiers/global_loot_modifiers.json only registers that modifier
+      in the global list (Forge merges the files of all mods). You normally never need
+      to touch it; if you do, keep "replace": false so the modifiers of other mods
+      survive.
+10.3 Resourcepack side (assets/spiderqueen_hungrycraft/, looks and text only)
+    · lang/zh_cn.json and lang/en_us.json: every name and message. To add a language,
+      ship lang/<locale>.json (for example ja_jp.json) with the keys copied from
+      en_us.json. Covered keys: block.*, item.*, entity.*, effect.*, message.*,
+      death.attack.*, key.*, tooltip.* and hud.*.
+    · blockstates/*.json, models/block/*.json, models/item/*.json: the looks. Spawn egg
+      items use minecraft:item/template_spawn_egg by default; their egg colours are
+      defined in code and cannot be changed by json.
+    · particles/*.json: the texture list of a particle. Default: the vanilla
+      minecraft:generic_0..7. Point it at your own textures and ship those PNGs.
+    · sounds.json: the sound definitions. Default: only stomach_rumble, using the ogg of
+      this mod with stream: true. You may change volume, pitch,
+      attenuation_distance or point it at your own file.
+    · Texture paths: textures/block/spider_bed.png, textures/item/cocoon.png,
+      textures/entity/chad_steve.png, textures/entity/cocoon.png,
+      textures/gui/beast_vision_overlay.png, textures/mob_effect/day_vision.png,
+      textures/mob_effect/light_sensitivity.png.
+      Note: the queen webs and the territory core reuse the vanilla
+      minecraft:block/cobweb texture and ship no PNG of their own; to change their look,
+      override the blockstate and model in a resource pack and point them at your own
+      texture.
+
+10.4 The soul container rule book (Soul Consumable round, data/spiderqueen_hungrycraft/soul_loot/, 3 files)
+    · container_weights.json holds the weights of how many lumps a container may hold, from 0
+      to 4:
+        "count_weights": [2, 38, 30, 20, 10]      <- the weight of 0/1/2/3/4 pieces
+      Default: 98% of the containers hold at least one piece, about 1.98 pieces on average.
+      Put a 0 on a count to make that count impossible; [100, 0, 0, 0, 0] turns the whole
+      feature off without touching code.
+    · structure_families.json holds the canonical families. Each entry names the family (one
+      of the fifteen), the soul that family pays, its structure ids and its structure tags.
+      A family is what a structure IS and not where it stands: a jungle fortress is still a
+      nether fortress, an end mineshaft is still a mineshaft. The order of the families is
+      the priority when two structures cover the same container - the earlier one wins.
+    · loot_tables.json holds the loot table aliases and the refused tables. An alias is
+      read three ways:
+        1) as the family, when no structure owns the container (minecraft:chests/
+           simple_dungeon -> dungeon, because a monster room is not a registered structure);
+        2) as a sub type, when it belongs to the family the structure named (a village smith,
+           a shipwreck treasure, a bastion treasure);
+        3) never, when it belongs to another family - the structure always wins.
+      ignored_loot_tables never hold a soul even inside a structure that pays (the dispenser
+      of a jungle temple and the dispensers of Repurposed Structures are listed there).
+    · The three files are merged in the order of their names (a later file wins per key), so
+      a pack adds an alias for another structure mod by shipping its own soul_loot/xxx.json -
+      it never has to copy the files of this mod.
+    · Resolution order: the structure context names the family, the loot table then sharpens
+      or names it, and the family pays one soul. A container is ever given at most ONE
+      ItemStack of 1..4 pieces, so this mod never costs a container more than one slot.
+    · The compatibility is optional: the repurposed_structures:* and better*:* names are
+      plain strings, so a world without those mods starts, plays, runs its game tests and
+      fills its vanilla chests exactly as it did before.
+
+--------------------------------------------------------------------------------
+【11】不是 JSON 的配置：Forge 配置文件（中文）
+--------------------------------------------------------------------------------
+文件：config/spiderqueen_hungrycraft-common.toml（Forge 的 COMMON 配置，服务端生效；
+      改完需要重启服务器/游戏）。它是 TOML，不是 JSON，但同样是给整合包作者用的。
+  [world]
+    start_new_world_at_midnight          新世界是否从午夜开始（默认 true）
+    initial_overworld_time               新世界起始时间，0=日出 18000=午夜（默认 18000，0~23999）
+  [village]
+    village_hostility_enabled            村庄敌对总开关（默认 true；关掉后村民恐惧、
+                                         村庄守卫与初始交易惩罚全部停止，原版行为不变）
+    village_defender_attack_range        村庄守卫发现女王的距离（默认 24，1~128）
+    villager_fear_range                  村民发现女王的距离（默认 12，1~64）
+    villager_fear_memory_ticks           村民恐慌记忆时长（默认 100，20~6000）
+    initial_villager_reputation_penalty_enabled  首次见面是否给一次负面流言（默认 true）
+    initial_villager_negative_gossip_value       流言值（默认 10 ≈ -50 声望，1~100）
+    hero_of_the_village_disables_village_hostility  村庄英雄是否临时压制敌意（默认 true）
+    player_created_golems_attack_spider_queen    玩家自建铁傀儡是否攻击女王（默认 true；
+                                                 设为 false 则保留原版“自建傀儡不打玩家”的观感。
+                                                 注意：已有的配置文件优先于默认值，老配置里若是
+                                                 false 需手动改成 true 才会生效）
+  [humans]
+    human_combatant_ignores_monsters     人类战斗员是否不再猎杀怪物阵营（默认 false）
+  [infested_steve]                       坏兄弟（被吞噬的人体）的装备与药品规则
+    gear_pickup_cooldown_ticks           一个装备位刚换上装备后多久不再接新装备（默认 40 tick
+                                         = 2 秒，0~1200）。它只负责“防抖”：真正让“穿上又脱下”
+                                         死循环停下来的是原版规则“已占用的位置只有更好的装备才换”，
+                                         所以设成 0 也不会回到旧 bug，只会退回原版 10 tick 拾取延迟。
+    out_of_combat_heal_ratio             脱战自动吃金苹果的血量比例（默认 0.5 = 一半，0.0~1.0；
+                                         0.0 直接关闭这条脱战回血规则）。战斗中的阈值不受影响，
+                                         仍是共享人类战斗逻辑的 35%（危急 20%）。
+    out_of_combat_heal_cooldown_ticks    两次脱战吃药之间的冷却（默认 200 tick = 10 秒，0~72000）
+  [hunting]
+    capture_enabled                      捕获总开关（默认 true）
+    cocoon_hits_to_pack                  敲几次把蜘蛛茧实体打包成物品（默认 3，1~20）
+    empowered_attack_enabled             强化普攻开关（默认 true）
+    empowered_attack_window_ticks        强化普攻等待下次近战的窗口（默认 100，10~1200）
+    empowered_attack_damage_multiplier   强化普攻伤害倍率（默认 2.0，1~10）
+    empowered_attack_poison_duration_ticks  强化普攻的中毒时长（默认 100，20~1200）
+    empowered_attack_wither_duration_ticks  强化普攻的凋零时长（默认 100，20~1200）
+
+--------------------------------------------------------------------------------
+【12】改不了的地方（代码固定，写在 Java 里）/ Hardcoded in Java
+--------------------------------------------------------------------------------
+  · 领地核心：范围 3x3x3 区块段、60 秒恒定挖掘、只拦自然刷新、右键显示 5 秒、亮度 10。
+  · 蛛丝缠绕(Webbed)：首次命中 100 tick、之后每次 120 tick、最高 IV 级、蜘蛛类免疫。
+  · 捕获概率：当前血量 ≤20 才可能、每缺 1 点血 +5%、每级缠绕 +10%、上限 95%。
+  · 吞食营养值：按碰撞箱体积 ×12，钳制在 2~20 之间。
+  · 女王采网掉落数量：4~6 个线（只能用战利品条件开关，不能改数量）。
+  · 蜘蛛茧保存的生物数据：除 UUID、坐标/速度/朝向、坠落距离、世界 id、乘客、栓绳、死亡计时外，
+    其余 NBT 全部原样保存（名字、血量、吸收、余火、余氧、属性与修饰符、药水效果、装备与掉落率、
+    物品栏、村民交易与经验、驯服主人、标签、记忆、其它模组的 capability），剪开茧时按原样还原。
+  · 剪开蜘蛛茧：手持剪刀右键蜘蛛茧（任何玩家，不限女王）→ 茧消失、里面的生物原样放出、剪刀消耗
+    1 点耐久（创造模式不消耗）、茧周围爆出一圈原版蛛网方块破碎粒子；茧内生物若已无法识别（提供
+    它的模组被移除），则剪不开，茧会保留。
+  · 胃袋：内部隔间生成、HUD、音效转发、传送与吞入/吐出流程、伤害链接规则。
+  · 畏光(Light Sensitivity)：光照亮度 ≥12 才触发；前 2 分钟无任何影响，之后依次为
+    虚弱 I(2 分)、虚弱 II(4 分)、缓慢 I(5 分)、反胃(7 分)、失明(10 分)；
+    走进更暗的地方(含 8~11 的昏暗带)或喝下昼视药水立刻清空全部并重置倒计时；
+    创造/旁观模式不受影响；光照给出的效果(畏光与其全部 debuff)都没有药水粒子。
+  · 酿造：粗制药水 + 发光墨囊 → 昼视药水的酿造配方由代码注册。
+  · 模型/动画/按键/粒子逻辑/网络包结构（协议版本随 mod 版本变化）。
+
+--------------------------------------------------------------------------------
+【13】排查清单（中文）/ Troubleshooting (English below)
+--------------------------------------------------------------------------------
+  1) 完全没生效：
+     · 数据包是否在 <存档>/datapacks/<包名>/ 且带 pack.mcmeta（pack_format = 15）？
+     · 路径是否与第 2 节表格完全一致（命名空间、文件夹名、文件名都要对）？
+     · 是否执行了 /reload？日志里有没有报错？
+     · 有些内容（维度/维度类型）必须退出重进世界或重启游戏。
+  2) 只有一部分生效：
+     · 无效的 id（方块/实体/物品/标签）会被跳过并在日志里 warn，其余照常生效。
+       搜索日志关键字：Ignoring unknown block / unknown entity / invalid block tag。
+  3) 日志里可以确认这些：
+     · Applied N beast tuning file(s)           巨蛛调参已加载 N 份
+     · No beast tuning file found, using the built in defaults
+     · [Loadout] ...                           人类装备表的状态
+     · [Spawn] ...                             人类刷新规则的状态
+  4) 外观改了没变化：
+     · 资源包是否启用？按 F3+T 重载或重启客户端；贴图路径必须与模型里的引用一致。
+  5) 手感/数值改了没变化：
+     · 有些数值在 Forge 配置文件里（第 11 节），不在 JSON 里；有些写死在代码里（第 12 节）。
+  6) 联机注意：客户端与服务端都要装同一版本的 mod（协议版本必须一致），
+     数值类改动在服务端生效并对所有玩家一致。
+--------------------------------------------------------------------------------
+【11-E】Not JSON: the Forge configuration file (English)
+--------------------------------------------------------------------------------
+File: config/spiderqueen_hungrycraft-common.toml (Forge COMMON config, effective on the
+      server; a restart is needed after editing). It is TOML, not JSON, but it is meant
+      for modpack authors all the same.
+  [world]
+    start_new_world_at_midnight      start a brand new world at the initial time (true)
+    initial_overworld_time           0 = sunrise, 18000 = midnight (18000, 0~23999)
+  [village]
+    village_hostility_enabled        master switch of village hostility (true). When off,
+                                     villager fear, village defenders and the initial
+                                     trading penalty all stop and vanilla behaviour is
+                                     untouched.
+    village_defender_attack_range    distance a defender notices the queen (24, 1~128)
+    villager_fear_range              distance a villager notices the queen (12, 1~64)
+    villager_fear_memory_ticks       panic memory length (100, 20~6000)
+    initial_villager_reputation_penalty_enabled  one negative gossip on first meeting (true)
+    initial_villager_negative_gossip_value       gossip value (10 = -50 reputation, 1~100)
+    hero_of_the_village_disables_village_hostility  (true)
+    player_created_golems_attack_spider_queen       (true; set it to false to keep the vanilla look of a golem
+                                                     that never attacks a player. An existing config file always
+                                                     wins over the default, so an old file with false needs an
+                                                     edit to take effect)
+  [humans]
+    human_combatant_ignores_monsters stop the combatant from hunting the monster
+                                     faction (false)
+  [infested_steve]                   gear and medicine rules of the infested Steve
+    gear_pickup_cooldown_ticks       how long one place of gear refuses a new piece after it
+                                     was changed (40 = 2 seconds, 0~1200). It is only the
+                                     anti-flicker belt: the rule that really ends the
+                                     put-on / take-off loop is the vanilla "a filled place
+                                     only takes a better piece", so 0 does not bring the old
+                                     bug back, it only returns to the vanilla 10 tick pickup delay.
+    out_of_combat_heal_ratio         health share below which a body that is NOT fighting eats
+                                     one of its golden apples (0.5 = half, 0.0~1.0; 0.0 turns
+                                     the out of combat medicine off). The thresholds of the
+                                     fight itself are untouched (35%, critical 20%).
+    out_of_combat_heal_cooldown_ticks  ticks between two out of combat bites (200 = 10s, 0~72000)
+  [hunting]
+    capture_enabled                  master switch of capturing (true)
+    cocoon_hits_to_pack              hits that pack a cocoon entity into an item (3, 1~20)
+    empowered_attack_enabled         (true)
+    empowered_attack_window_ticks    (100, 10~1200)
+    empowered_attack_damage_multiplier (2.0, 1~10)
+    empowered_attack_poison_duration_ticks (100, 20~1200)
+    empowered_attack_wither_duration_ticks (100, 20~1200)
+
+--------------------------------------------------------------------------------
+【12-E】Hardcoded in Java (no json, no toml)
+--------------------------------------------------------------------------------
+  · Territory Core: the 3x3x3 section box, the constant 60 second mining time, that only
+    natural spawns are denied, the 5 second range display and the light level 10.
+  · Webbed: first hit 100 ticks, later hits 120 ticks, up to level IV, spiders immune.
+  · Capture chance: only at 20 health or below, +5% per missing health point, +10% per
+    Webbed level, capped at 95%.
+  · Nutrition: bounding box volume x12, clamped to 2~20.
+  · Queen web harvest amount: 4~6 string. You can only switch it off with a loot
+    condition, never change the amount.
+  · What a cocoon keeps of its prey: every NBT key except UUID, position / velocity / rotation,
+    fall distance, world id, passengers, leash and death timer - the name, health, absorption,
+    remaining fire and air, attributes and modifiers, potion effects, equipment and drop chances,
+    inventory, villager trades and experience, tamed owner, tags, memories and other mods'
+    capability data. All of it is put back when the silk is cut open.
+  · Cutting a cocoon open: right click a cocoon with shears (any player, queen or not) - the cocoon is
+    destroyed, the prey is let out exactly as it was, the shears lose 1 durability (none in creative
+    mode) and a ring of vanilla cobweb break particles bursts around the silk. A creature that can no
+    longer be built (the mod that added it was removed) refuses the cut and keeps the cocoon.
+  · Stomach: the generated inner rooms, the HUD, the sound relay, the teleport and
+    swallow / spit flow and the damage link rules.
+  · Light Sensitivity: only at light level 12 or higher; nothing for the first two minutes,
+    then weakness I (2 min), weakness II (4 min), slowness I (5 min), nausea (7 min)
+    and blindness (10 min). Stepping into a darker place or drinking the potion of day
+    vision clears all of it and restarts the countdown; creative and spectator players
+    are never touched; none of these effects show particles.
+  · Brewing: the Awkward Potion + Glow Ink Sac recipe of the Day Vision potion is
+    registered in code.
+  · Models, animations, keys, particle logic and the network packet layout (the protocol
+    version changes with the mod version).
+--------------------------------------------------------------------------------
+【13-E】Troubleshooting (English)
+--------------------------------------------------------------------------------
+  1) Nothing happened at all:
+     · Is the datapack in <world>/datapacks/<pack>/ with a pack.mcmeta
+       (pack_format = 15)?
+     · Does the path match the table in section 2 exactly (namespace, folders, file)?
+     · Did you run /reload? Is there an error in the log?
+     · Dimensions and dimension types need a world re-enter or a game restart.
+  2) Only part of it worked:
+     · An unknown id (block / entity / item / tag) is skipped with one warning and the
+       rest keeps working. Search the log for: Ignoring unknown block, unknown entity,
+       invalid block tag.
+  3) Log lines worth knowing:
+     · "Applied N beast tuning file(s)"
+     · "No beast tuning file found, using the built in defaults"
+     · lines starting with "[Loadout]" and "[Spawn]"
+  4) A look did not change:
+     · Is the resource pack enabled? Press F3+T or restart the client, and check that the
+       texture path really matches the one referenced inside the model.
+  5) A gameplay value did not change:
+     · Some values live in the Forge config file (section 11), others are hardcoded in
+       Java (section 12).
+  6) Multiplayer: client and server must run the same mod version (the protocol version
+     has to match). Server side values apply to every player.
+
+--------------------------------------------------------------------------------
+【14】结尾与安全声明 / Closing and safety notice
+--------------------------------------------------------------------------------
+中文：
+  · 本文件是纯文本说明，不含任何代码，也不会被游戏、Forge 或本 mod 读取：它不在 data/
+    或 assets/ 目录下，不参与数据包/资源包加载，不占用任何注册表条目。因此「留在 jar
+    里」和「删掉」都不影响运行，也绝不会因为没被移除而导致崩溃或性能变化。
+  · 欢迎复制、修改、翻译，并随你的整合包一起分发。
+  · 修改前请先备份；改坏了就删掉你添加的文件，游戏会自动退回 mod 的内置默认。
+  · jar 位置：<整合包目录>/mods/spiderqueen_hungrycraft-0.0.1-dev.jar
+    构建输出目录：build/libs/spiderqueen_hungrycraft-0.0.1-dev.jar
+
+English:
+  · This file is plain text documentation. It contains no code and is never read by the
+    game, by Forge or by this mod: it lives neither under data/ nor under assets/, takes
+    part in no datapack or resourcepack loading and claims no registry entry. Keeping it
+    inside the jar and deleting it are both completely safe, and leaving it in place can
+    never crash the game or change performance.
+  · Feel free to copy, edit and translate it, and to ship it with your modpack.
+  · Back up before editing; if something breaks, delete the file you added and the game
+    falls back to the built in defaults of this mod.
+  · Jar location: <modpack>/mods/spiderqueen_hungrycraft-0.0.1-dev.jar
+    Build output folder: build/libs/spiderqueen_hungrycraft-0.0.1-dev.jar
+
+================================================================================
+ 文档结束 / End of guide
+ 蜘蛛女王：饥饿工艺 / Spider Queen: Hungry Craft
+ 祝你好运，玩得开心 / Good luck and have fun
+================================================================================

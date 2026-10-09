@@ -1,0 +1,18 @@
+{
+  "required_level": 20,
+  "soul_cost": 2000,
+  "prerequisites": [
+    "spiderqueen_hungrycraft:queen_beast",
+    "spiderqueen_hungrycraft:giant_devour",
+    "spiderqueen_hungrycraft:visceral_enhancement"
+  ],
+  "icon": "minecraft:iron_chestplate",
+  "name": "skill.spiderqueen_hungrycraft.visceral_enhancement_ii",
+  "description": "skill.spiderqueen_hungrycraft.visceral_enhancement_ii.desc",
+  "required_for_legend": true,
+  "layout": {
+    "anchor_level": 23,
+    "side": "left",
+    "lane": 2
+  }
+}

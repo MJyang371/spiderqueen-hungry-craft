@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:cobweb",
+    "spiderqueen_hungrycraft:queen_web",
+    "spiderqueen_hungrycraft:poison_queen_web",
+    "spiderqueen_hungrycraft:fire_queen_web",
+    "spiderqueen_hungrycraft:spider_bed"
+  ]
+}

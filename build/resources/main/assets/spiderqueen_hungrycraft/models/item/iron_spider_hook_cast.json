@@ -1,0 +1,6 @@
+{
+  "parent": "spiderqueen_hungrycraft:item/spider_hook_held",
+  "textures": {
+    "layer0": "spiderqueen_hungrycraft:item/iron_spider_hook"
+  }
+}

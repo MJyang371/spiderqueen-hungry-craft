@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "disguised=false": {
+      "model": "spiderqueen_hungrycraft:block/spider_trigger"
+    },
+    "disguised=true": {
+      "model": "spiderqueen_hungrycraft:block/spider_trigger_disguised"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "spiderqueen_hungrycraft:stomach",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "spiderqueen_hungrycraft:stomach",
+      "lakes": false,
+      "features": false,
+      "layers": [],
+      "structure_overrides": []
+    }
+  }
+}
+

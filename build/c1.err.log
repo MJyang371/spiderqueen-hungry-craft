@@ -1,0 +1,25 @@
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\brood\SpiderEggArrowItem.java:25: 错误: 程序包Item不存在
+    public SpiderEggArrowItem(Item.Properties properties)
+                                  ^
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\client\HungryCraftClientSetup.java:61: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+            ResourceLocation cast = new ResourceLocation(SpiderQueenHungryCraft.MODID, "cast");
+                                    ^
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\stomach\StomachCellManager.java:44: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+            ResourceKey.create(Registries.DIMENSION, new ResourceLocation(SpiderQueenHungryCraft.MODID, "stomach"));
+                                                     ^
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+1 个错误
+2 个警告
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+> Run with --info option to get more log output.
+> Run with --scan to get full insights.
+
+BUILD FAILED in 1m 27s

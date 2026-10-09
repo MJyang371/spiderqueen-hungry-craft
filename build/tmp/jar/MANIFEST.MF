@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Specification-Title: spiderqueen_hungrycraft
+Specification-Vendor: Spider Queen Dev
+Specification-Version: 1
+Implementation-Title: SpiderQueen-HungryCraft-Forge-1.20.1
+Implementation-Version: 0.0.1-dev
+Implementation-Vendor: Spider Queen Dev
+Implementation-Timestamp: 2026-10-09T22:08:16+0800
+MixinConfigs: spiderqueen_hungrycraft.mixins.json,spiderqueen_hungrycraf
+ t_iaf.mixins.json
+

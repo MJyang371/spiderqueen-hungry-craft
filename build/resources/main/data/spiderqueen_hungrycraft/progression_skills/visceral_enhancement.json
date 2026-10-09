@@ -1,0 +1,14 @@
+{
+  "required_level": 1,
+  "soul_cost": 250,
+  "prerequisites": [],
+  "icon": "minecraft:rotten_flesh",
+  "name": "skill.spiderqueen_hungrycraft.visceral_enhancement",
+  "description": "skill.spiderqueen_hungrycraft.visceral_enhancement.desc",
+  "required_for_legend": true,
+  "layout": {
+    "anchor_level": 1,
+    "side": "left",
+    "lane": 1
+  }
+}

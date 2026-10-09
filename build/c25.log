@@ -1,0 +1,23 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Hungry Craft: offline mode is on, no network access is used (pass -Phungrycraft.offline=false to allow it).
+
+> Configure project :
+Java: 21.0.12.1, JVM: 21.0.12.1+1-LTS (Microsoft), Arch: amd64
+
+> Task :compileJava
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\client\HungryCraftClientSetup.java:65: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+            ResourceLocation cast = new ResourceLocation(SpiderQueenHungryCraft.MODID, "cast");
+                                    ^
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\compat\iceandfire\client\SoulfireDragonRenderer.java:74: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        return new ResourceLocation("iceandfire", "textures/models/" + TEXTURE + stage + ".png");
+               ^
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\registry\HungryCraftEntities.java:453: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        net.minecraft.resources.ResourceLocation oldId = new net.minecraft.resources.ResourceLocation(
+                                                         ^
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+3 个警告
+
+BUILD SUCCESSFUL in 22s
+1 actionable task: 1 executed

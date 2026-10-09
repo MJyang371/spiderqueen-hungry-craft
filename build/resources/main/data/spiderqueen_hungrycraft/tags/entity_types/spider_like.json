@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:spider",
+    "minecraft:cave_spider",
+    "spiderqueen_hungrycraft:imp_spider",
+    "spiderqueen_hungrycraft:brood_spider",
+    "spiderqueen_hungrycraft:zombie_spider",
+    "spiderqueen_hungrycraft:skeleton_spider",
+    "spiderqueen_hungrycraft:chrono_spider",
+    "spiderqueen_hungrycraft:stray_spider",
+    "spiderqueen_hungrycraft:husk_spider",
+    "spiderqueen_hungrycraft:drowned_spider",
+    "spiderqueen_hungrycraft:creeper_spider",
+    "spiderqueen_hungrycraft:infested_steve"
+  ]
+}

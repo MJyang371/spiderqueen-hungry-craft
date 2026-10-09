@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "package": "spiderqueenhungrycraft.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "target": "@env(DEFAULT)",
+  "refmap": "spiderqueen_hungrycraft.refmap.json",
+  "mixins": [
+    "EntityWebAffinityMixin",
+    "BeastHurtSoundMixin",
+    "BeastPushImmunityMixin",
+    "ExplosionBeastImpulseMixin",
+    "BeastJumpSuppressionMixin"
+  ],
+  "client": [
+    "BeastCameraMixin",
+    "BeastHurtCameraMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

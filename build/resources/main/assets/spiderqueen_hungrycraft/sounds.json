@@ -1,0 +1,15 @@
+{
+  "stomach_rumble": {
+    "sounds": [
+      {
+        "name": "spiderqueen_hungrycraft:stomach_rumble",
+        "stream": true
+      }
+    ]
+  },
+  "find_soul": {
+    "sounds": [
+      "spiderqueen_hungrycraft:find_soul"
+    ]
+  }
+}

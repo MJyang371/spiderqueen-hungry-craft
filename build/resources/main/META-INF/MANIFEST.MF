@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+MixinConfigs: spiderqueen_hungrycraft.mixins.json,spiderqueen_hungrycraft_iaf.mixins.json

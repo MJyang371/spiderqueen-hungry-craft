@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " E ",
+    "EAE"
+  ],
+  "key": {
+    "E": {
+      "item": "spiderqueen_hungrycraft:spider_egg"
+    },
+    "A": {
+      "item": "minecraft:arrow"
+    }
+  },
+  "result": {
+    "item": "spiderqueen_hungrycraft:spider_egg_arrow",
+    "count": 1
+  }
+}

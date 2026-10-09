@@ -1,0 +1,36 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.8/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Hungry Craft: offline mode is on, no network access is used (pass -Phungrycraft.offline=false to allow it).
+
+> Configure project :
+Java: 21.0.12.1, JVM: 21.0.12.1+1-LTS (Microsoft), Arch: amd64
+
+> Task :compileJava
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\client\HungryCraftClientSetup.java:65: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+            ResourceLocation cast = new ResourceLocation(SpiderQueenHungryCraft.MODID, "cast");
+                                    ^
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\compat\iceandfire\client\ContractedBoneDragonRenderer.java:58: 错误: 无法从静态上下文中引用非静态 方法 loadTabulaModel(String)
+        return new TabulaModel(TabulaModelHandler.loadTabulaModel(path),
+                                                 ^
+D:\MinecraftModding\SpiderQueen-HungryCraft-Forge-1.20.1\src\main\java\spiderqueenhungrycraft\compat\iceandfire\client\ContractedBoneDragonRenderer.java:79: 警告: [removal] ResourceLocation 中的 ResourceLocation(String,String) 已过时, 且标记为待删除
+        return new ResourceLocation("iceandfire", "textures/models/" + folder + "_skeleton_" + stage + ".png");
+               ^
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+1 个错误
+2 个警告
+
+> Task :compileJava FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
+
+* Try:
+> Run with --info option to get more log output.
+> Run with --scan to get full insights.
+
+BUILD FAILED in 32s
+1 actionable task: 1 executed

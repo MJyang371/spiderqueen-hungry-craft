@@ -1,0 +1,232 @@
+2026-10-09 20:42:57,805 main WARN Advanced terminal features are not available in this environment
+[20:42:58] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--username, 111, --version, 1.20.1-Forge_47.4.23, --gameDir, D:\我的世界测试版\2\versions\1.20.1-Forge_47.4.23, --assetsDir, D:\我的世界测试版\2\assets, --assetIndex, 5, --uuid, 00000FFFFFFFFFFFFFFFFFFFFFF0E09B, --accessToken, ❄❄❄❄❄❄❄❄, --clientId, 00000FFFFFFFFFFFFFFFFFFFFFF0E09B, --xuid, 0, --userType, msa, --versionType, PCL, --width, 854, --height, 480, --launchTarget, forgeclient, --fml.forgeVersion, 47.4.23, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --quickPlaySingleplayer, 新的世界, (1)]
+[20:42:58] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 21.0.12.1 by Microsoft; OS Windows 11 arch amd64 version 10.0
+[20:42:58] [main/INFO] [ne.mi.fm.lo.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[20:42:58] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[20:42:58] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[20:42:59] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/D:/我的世界测试版/2/libraries/org/spongepowered/mixin/0.8.5/mixin-0.8.5.jar%23150!/ Service=ModLauncher Env=CLIENT
+[20:42:59] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: Intel(R) RaptorLake-S Mobile Graphics Controller GL version 4.6.0 - Build 32.0.101.6790, Intel
+[20:42:59] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file D:\我的世界测试版\2\libraries\net\minecraftforge\fmlcore\1.20.1-47.4.23\fmlcore-1.20.1-47.4.23.jar is missing mods.toml file
+[20:42:59] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file D:\我的世界测试版\2\libraries\net\minecraftforge\javafmllanguage\1.20.1-47.4.23\javafmllanguage-1.20.1-47.4.23.jar is missing mods.toml file
+[20:42:59] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file D:\我的世界测试版\2\libraries\net\minecraftforge\lowcodelanguage\1.20.1-47.4.23\lowcodelanguage-1.20.1-47.4.23.jar is missing mods.toml file
+[20:42:59] [main/WARN] [ne.mi.fm.lo.mo.ModFileParser/LOADING]: Mod file D:\我的世界测试版\2\libraries\net\minecraftforge\mclanguage\1.20.1-47.4.23\mclanguage-1.20.1-47.4.23.jar is missing mods.toml file
+[20:42:59] [main/INFO] [ne.mi.fm.lo.mo.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[20:43:01] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[20:43:01] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclient' with arguments [--version, 1.20.1-Forge_47.4.23, --gameDir, D:\我的世界测试版\2\versions\1.20.1-Forge_47.4.23, --assetsDir, D:\我的世界测试版\2\assets, --uuid, 00000FFFFFFFFFFFFFFFFFFFFFF0E09B, --username, 111, --assetIndex, 5, --accessToken, ❄❄❄❄❄❄❄❄, --clientId, 00000FFFFFFFFFFFFFFFFFFFFFF0E09B, --xuid, 0, --userType, msa, --versionType, PCL, --width, 854, --height, 480, --quickPlaySingleplayer, 新的世界, (1)]
+[20:43:01] [main/INFO] [sp.mi.co.ia.IceAndFireMixinPlugin/]: Hungry Craft: Ice and Fire detected, the dragon compatibility hooks are active.
+Completely ignored arguments: [(1)]
+[20:43:20] [Datafixer Bootstrap/INFO] [mojang/DataFixerBuilder]: 188 Datafixer optimizations took 759 milliseconds
+[20:43:26] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/D:/我的世界测试版/2/libraries/net/minecraft/client/1.20.1-20230612.114412/client-1.20.1-20230612.114412-srg.jar%23162!/assets/.mcassetsroot' uses unexpected schema
+[20:43:26] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/D:/我的世界测试版/2/libraries/net/minecraft/client/1.20.1-20230612.114412/client-1.20.1-20230612.114412-srg.jar%23162!/data/.mcassetsroot' uses unexpected schema
+[20:43:26] [Render thread/INFO] [mojang/YggdrasilAuthenticationService]: Environment: authHost='https://authserver.mojang.com', accountsHost='https://api.mojang.com', sessionHost='https://sessionserver.mojang.com', servicesHost='https://api.minecraftservices.com', name='PROD'
+[20:43:28] [Render thread/ERROR] [minecraft/Minecraft]: Failed to verify authentication
+com.mojang.authlib.exceptions.InvalidCredentialsException: Status: 401
+	at com.mojang.authlib.exceptions.MinecraftClientHttpException.toAuthenticationException(MinecraftClientHttpException.java:56) ~[authlib-4.0.43.jar%2390!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:156) ~[authlib-4.0.43.jar%2390!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.<init>(YggdrasilUserApiService.java:55) ~[authlib-4.0.43.jar%2390!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService.createUserApiService(YggdrasilAuthenticationService.java:124) ~[authlib-4.0.43.jar%2390!/:?] {}
+	at net.minecraft.client.Minecraft.m_193585_(Minecraft.java:649) ~[client-1.20.1-20230612.114412-srg.jar%23162!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+	at net.minecraft.client.Minecraft.<init>(Minecraft.java:413) ~[client-1.20.1-20230612.114412-srg.jar%23162!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
+	at net.minecraft.client.main.Main.main(Main.java:182) ~[1.20.1-Forge_47.4.23.jar:?] {re:classloading}
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:580) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.23.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99) ~[fmlloader-1.20.1-47.4.23.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonClientLaunchHandler.lambda$makeService$0(CommonClientLaunchHandler.java:25) ~[fmlloader-1.20.1-47.4.23.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+Caused by: com.mojang.authlib.exceptions.MinecraftClientHttpException: Status: 401
+	at com.mojang.authlib.minecraft.client.MinecraftClient.readInputStream(MinecraftClient.java:85) ~[authlib-4.0.43.jar%2390!/:?] {}
+	at com.mojang.authlib.minecraft.client.MinecraftClient.get(MinecraftClient.java:48) ~[authlib-4.0.43.jar%2390!/:?] {}
+	at com.mojang.authlib.yggdrasil.YggdrasilUserApiService.fetchProperties(YggdrasilUserApiService.java:129) ~[authlib-4.0.43.jar%2390!/:?] {}
+	... 18 more
+[20:43:28] [Render thread/INFO] [minecraft/Minecraft]: Setting user: 111
+[20:43:29] [Render thread/INFO] [minecraft/Minecraft]: Backend library: LWJGL version 3.3.1 build 7
+[20:43:29] [modloading-worker-0/INFO] [ne.mi.co.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.23, for MC 1.20.1 with MCP 20230612.114412
+[20:43:29] [modloading-worker-0/INFO] [ne.mi.co.MinecraftForge/FORGE]: MinecraftForge v47.4.23 Initialized
+[20:43:31] [modloading-worker-0/INFO] [sp.SpiderQueenHungryCraft/]: Spider Queen: Hungry Craft loaded
+[20:43:32] [modloading-worker-0/INFO] [sp.mi.co.ia.IceAndFireMixinPlugin/]: Hungry Craft: Ice and Fire hook applied - spiderqueenhungrycraft.mixin.compat.iaf.EntityDragonBaseRiderMixin -> com.github.alexthe666.iceandfire.entity.EntityDragonBase
+[20:43:32] [modloading-worker-0/INFO] [sp.mi.co.ia.IceAndFireMixinPlugin/]: Hungry Craft: Ice and Fire hook applied - spiderqueenhungrycraft.mixin.compat.iaf.EntityDragonBaseAutonomyMixin -> com.github.alexthe666.iceandfire.entity.EntityDragonBase
+[20:43:32] [modloading-worker-0/INFO] [sp.mi.co.ia.IceAndFireMixinPlugin/]: Hungry Craft: Ice and Fire hook applied - spiderqueenhungrycraft.mixin.compat.iaf.EntityDragonBaseEyesMixin -> com.github.alexthe666.iceandfire.entity.EntityDragonBase
+[20:43:37] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [round7C] soulfire dragon renderer registered (Ice and Fire model and animations)
+[20:43:37] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [HF0C] human renderer registered for 4 entity types
+[20:43:38] [Worker-Main-2/ERROR] [minecraft/AccountProfileKeyPairManager]: Failed to retrieve profile key pair
+java.io.IOException: Could not retrieve profile key pair
+	at net.minecraft.client.multiplayer.AccountProfileKeyPairManager.m_253252_(AccountProfileKeyPairManager.java:129) ~[client-1.20.1-20230612.114412-srg.jar%23162!/:?] {re:classloading}
+	at net.minecraft.client.multiplayer.AccountProfileKeyPairManager.m_252828_(AccountProfileKeyPairManager.java:74) ~[client-1.20.1-20230612.114412-srg.jar%23162!/:?] {re:classloading}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$AsyncSupply.exec(CompletableFuture.java:1760) ~[?:?] {}
+	at java.util.concurrent.ForkJoinTask.doExec(ForkJoinTask.java:387) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(ForkJoinPool.java:1312) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.scan(ForkJoinPool.java:1843) ~[?:?] {}
+	at java.util.concurrent.ForkJoinPool.runWorker(ForkJoinPool.java:1808) ~[?:?] {}
+	at java.util.concurrent.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:188) ~[?:?] {}
+[20:43:38] [Render thread/INFO] [minecraft/ReloadableResourceManager]: Reloading ResourceManager: vanilla, mod_resources
+[20:43:39] [Worker-Main-12/INFO] [minecraft/UnihexProvider]: Found unifont_all_no_pua-15.0.06.hex, loading
+[20:43:41] [Forge Version Check/INFO] [ne.mi.fm.VersionChecker/]: [forge] Starting version check at https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json
+[20:43:44] [Render thread/WARN] [citadel/]: Failed to load patreon contributor perks
+[20:43:44] [Render thread/WARN] [ne.mi.fm.DeferredWorkQueue/LOADING]: Mod 'citadel' took 3.043 s to run a deferred task.
+[20:43:45] [Render thread/WARN] [co.gi.al.ic.IceAndFire/]: Could not load /assets/iceandfire/models/tabula/firedragon/firedragon_swimming.tbl: in is null
+[20:43:45] [Render thread/WARN] [co.gi.al.ic.IceAndFire/]: Could not load /assets/iceandfire/models/tabula/firedragon/firedragon_swim5.tbl: in is null
+[20:43:46] [Render thread/WARN] [ne.mi.fm.DeferredWorkQueue/LOADING]: Mod 'iceandfire' took 1.404 s to run a deferred task.
+[20:43:56] [Forge Version Check/WARN] [ne.mi.fm.VersionChecker/]: Failed to process update information
+java.net.http.HttpConnectTimeoutException: HTTP connect timed out
+	at jdk.internal.net.http.HttpClientImpl.send(HttpClientImpl.java:949) ~[java.net.http:?] {}
+	at jdk.internal.net.http.HttpClientFacade.send(HttpClientFacade.java:133) ~[java.net.http:?] {}
+	at net.minecraftforge.fml.VersionChecker$1.openUrlString(VersionChecker.java:142) ~[fmlcore-1.20.1-47.4.23.jar%23163!/:?] {}
+	at net.minecraftforge.fml.VersionChecker$1.process(VersionChecker.java:180) ~[fmlcore-1.20.1-47.4.23.jar%23163!/:?] {}
+	at java.lang.Iterable.forEach(Iterable.java:75) ~[?:?] {re:mixin}
+	at net.minecraftforge.fml.VersionChecker$1.run(VersionChecker.java:117) ~[fmlcore-1.20.1-47.4.23.jar%23163!/:?] {}
+Caused by: java.net.http.HttpConnectTimeoutException: HTTP connect timed out
+	at jdk.internal.net.http.MultiExchange.toTimeoutException(MultiExchange.java:612) ~[java.net.http:?] {}
+	at jdk.internal.net.http.MultiExchange.getExceptionalCF(MultiExchange.java:556) ~[java.net.http:?] {}
+	at jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:475) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194) ~[?:?] {}
+	at jdk.internal.net.http.common.SSLFlowDelegate.stopOnError(SSLFlowDelegate.java:1021) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniExceptionally(CompletableFuture.java:990) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$UniExceptionally.tryFire(CompletableFuture.java:974) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194) ~[?:?] {}
+	at jdk.internal.net.http.common.SubscriberWrapper$DownstreamPusher.run1(SubscriberWrapper.java:295) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SubscriberWrapper$DownstreamPusher.run(SubscriberWrapper.java:259) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(SequentialScheduler.java:182) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:149) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SubscriberWrapper.errorCommon(SubscriberWrapper.java:421) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SSLFlowDelegate$Reader.errorCommon(SSLFlowDelegate.java:389) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SubscriberWrapper.onError(SubscriberWrapper.java:412) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(SocketTube.java:645) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:829) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalError(SocketTube.java:778) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube.signalClosed(SocketTube.java:159) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.close(PlainHttpConnection.java:428) ~[java.net.http:?] {}
+	at jdk.internal.net.http.AsyncSSLConnection.close(AsyncSSLConnection.java:116) ~[java.net.http:?] {}
+	at jdk.internal.net.http.Exchange$ConnectionAborter.closeConnection(Exchange.java:202) ~[java.net.http:?] {}
+	at jdk.internal.net.http.Exchange$ConnectionAborter.closeConnection(Exchange.java:185) ~[java.net.http:?] {}
+	at jdk.internal.net.http.Exchange.cancel(Exchange.java:293) ~[java.net.http:?] {}
+	at jdk.internal.net.http.MultiExchange.cancel(MultiExchange.java:266) ~[java.net.http:?] {}
+	at jdk.internal.net.http.ResponseTimerEvent.handle(ResponseTimerEvent.java:71) ~[java.net.http:?] {}
+	at jdk.internal.net.http.HttpClientImpl.purgeTimeoutsAndReturnNextDeadline(HttpClientImpl.java:1788) ~[java.net.http:?] {}
+	at jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1386) ~[java.net.http:?] {}
+Caused by: java.net.ConnectException: HTTP connect timed out
+	at jdk.internal.net.http.MultiExchange.toTimeoutException(MultiExchange.java:613) ~[java.net.http:?] {}
+	at jdk.internal.net.http.MultiExchange.getExceptionalCF(MultiExchange.java:556) ~[java.net.http:?] {}
+	at jdk.internal.net.http.MultiExchange.lambda$responseAsyncImpl$7(MultiExchange.java:475) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniHandle(CompletableFuture.java:934) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$UniHandle.tryFire(CompletableFuture.java:911) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194) ~[?:?] {}
+	at jdk.internal.net.http.common.SSLFlowDelegate.stopOnError(SSLFlowDelegate.java:1021) ~[java.net.http:?] {}
+	at java.util.concurrent.CompletableFuture.uniExceptionally(CompletableFuture.java:990) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture$UniExceptionally.tryFire(CompletableFuture.java:974) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.postComplete(CompletableFuture.java:510) ~[?:?] {}
+	at java.util.concurrent.CompletableFuture.completeExceptionally(CompletableFuture.java:2194) ~[?:?] {}
+	at jdk.internal.net.http.common.SubscriberWrapper$DownstreamPusher.run1(SubscriberWrapper.java:295) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SubscriberWrapper$DownstreamPusher.run(SubscriberWrapper.java:259) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler$LockingRestartableTask.run(SequentialScheduler.java:182) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler$CompleteRestartableTask.run(SequentialScheduler.java:149) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SubscriberWrapper.errorCommon(SubscriberWrapper.java:421) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SSLFlowDelegate$Reader.errorCommon(SSLFlowDelegate.java:389) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SubscriberWrapper.onError(SubscriberWrapper.java:412) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube$InternalReadPublisher$ReadSubscription.signalCompletion(SocketTube.java:645) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.read(SocketTube.java:829) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube$SocketFlowTask.run(SocketTube.java:181) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler$SchedulableTask.run(SequentialScheduler.java:207) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:280) ~[java.net.http:?] {}
+	at jdk.internal.net.http.common.SequentialScheduler.runOrSchedule(SequentialScheduler.java:233) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube$InternalReadPublisher$InternalReadSubscription.signalError(SocketTube.java:778) ~[java.net.http:?] {}
+	at jdk.internal.net.http.SocketTube.signalClosed(SocketTube.java:159) ~[java.net.http:?] {}
+	at jdk.internal.net.http.PlainHttpConnection.close(PlainHttpConnection.java:428) ~[java.net.http:?] {}
+	at jdk.internal.net.http.AsyncSSLConnection.close(AsyncSSLConnection.java:116) ~[java.net.http:?] {}
+	at jdk.internal.net.http.Exchange$ConnectionAborter.closeConnection(Exchange.java:202) ~[java.net.http:?] {}
+	at jdk.internal.net.http.Exchange$ConnectionAborter.closeConnection(Exchange.java:185) ~[java.net.http:?] {}
+	at jdk.internal.net.http.Exchange.cancel(Exchange.java:293) ~[java.net.http:?] {}
+	at jdk.internal.net.http.MultiExchange.cancel(MultiExchange.java:266) ~[java.net.http:?] {}
+	at jdk.internal.net.http.ResponseTimerEvent.handle(ResponseTimerEvent.java:71) ~[java.net.http:?] {}
+	at jdk.internal.net.http.HttpClientImpl.purgeTimeoutsAndReturnNextDeadline(HttpClientImpl.java:1788) ~[java.net.http:?] {}
+	at jdk.internal.net.http.HttpClientImpl$SelectorManager.run(HttpClientImpl.java:1386) ~[java.net.http:?] {}
+[20:43:58] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:item.goat_horn.play
+[20:43:58] [Render thread/WARN] [minecraft/SoundEngine]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[20:43:59] [Render thread/INFO] [mojang/Library]: OpenAL initialized on device OpenAL Soft on 扬声器 (Realtek(R) Audio)
+[20:43:59] [Render thread/INFO] [minecraft/SoundEngine]: Sound engine started
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 1024x1024x4 minecraft:textures/atlas/blocks.png-atlas
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/chest.png-atlas
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[20:43:59] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[20:44:00] [Render thread/WARN] [minecraft/ShaderInstance]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[20:44:00] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x0 minecraft:textures/atlas/particles.png-atlas
+[20:44:00] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x256x0 minecraft:textures/atlas/paintings.png-atlas
+[20:44:00] [Render thread/INFO] [minecraft/TextureAtlas]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[20:44:00] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: spiderqueen_hungrycraft:dormant_bone_dragon Expected: 1271 Got: 1838
+[20:44:00] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:item: Object did not get ID it asked for. Name: spiderqueen_hungrycraft:awakened_bone_dragon Expected: 1272 Got: 1839
+[20:44:00] [Render thread/WARN] [ne.mi.re.ForgeRegistry/REGISTRIES]: Registry minecraft:entity_type: Object did not get ID it asked for. Name: spiderqueen_hungrycraft:soulfire_dragon Expected: 125 Got: 208
+[20:44:01] [Worker-Main-4/ERROR] [minecraft/TagLoader]: Couldn't load tag spiderqueen_hungrycraft:beast_fragile as it is missing following references: #minecraft:replaceable_plants (from spiderqueen_hungrycraft-0.0.1-dev.jar)
+[20:44:02] [Render thread/INFO] [minecraft/RecipeManager]: Loaded 8 recipes
+[20:44:02] [Render thread/INFO] [minecraft/AdvancementList]: Loaded 1633 advancements
+[20:44:02] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [SoulLoot] 15 families, 134 structure aliases, 210 loot tables, 9 refused tables
+[20:44:02] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [SoulShop] 1 products loaded, 1 of them for sale
+[20:44:02] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [Skills] 9 nodes loaded, 9 of them enabled
+[20:44:02] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [Progression] definition is now max_level=200, base_cost=250, levels_per_tier=20, tier_increment=50
+[20:44:02] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [Loadout] human equipment table loaded from spiderqueen_hungrycraft:default
+[20:44:02] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [Spawn] human spawn rules loaded from spiderqueen_hungrycraft:default
+[20:44:02] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: [Spawn] surface spawn: one attempt every 20 ticks (1.0 per second) with chance 0.45 by day and 0.15 by night, aiming at 32/8 humans in the ring, at most 1 human(s) per chunk, and at most 32 humans within 48 blocks
+[20:44:02] [Render thread/INFO] [sp.SpiderQueenHungryCraft/]: Applied 1 beast tuning file(s)
+[20:44:02] [Server thread/INFO] [minecraft/IntegratedServer]: Starting integrated minecraft server version 1.20.1
+[20:44:02] [Server thread/INFO] [minecraft/MinecraftServer]: Generating keypair
+[20:44:04] [Server thread/INFO] [minecraft/MinecraftServer]: Preparing start region for dimension minecraft:overworld
+[20:44:06] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：0%
+[20:44:06] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：0%
+[20:44:06] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：0%
+[20:44:06] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：0%
+[20:44:06] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：0%
+[20:44:06] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：0%
+[20:44:07] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：0%
+[20:44:07] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：0%
+[20:44:08] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：11%
+[20:44:08] [Server thread/INFO] [sp.mi.co.ia.IceAndFireMixinPlugin/]: Hungry Craft: Ice and Fire hook applied - spiderqueenhungrycraft.mixin.compat.iaf.IafDragonFlightManagerAutonomyMixin -> com.github.alexthe666.iceandfire.entity.IafDragonFlightManager
+[20:44:08] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: 准备生成区域中：68%
+[20:44:08] [Server thread/INFO] [ne.mi.se.pe.PermissionAPI/]: Successfully initialized permission handler forge:default_handler
+[20:44:08] [Server thread/INFO] [co.gi.al.ic.IceAndFire/]: {iceandfire:fire_dragon_roost=true, iceandfire:fire_lily=true, iceandfire:spawn_dragon_skeleton_fire=true, iceandfire:lightning_dragon_roost=true, iceandfire:spawn_dragon_skeleton_lightning=true, iceandfire:ice_dragon_roost=true, iceandfire:ice_dragon_cave=true, iceandfire:lightning_dragon_cave=true, iceandfire:cyclops_cave=true, iceandfire:spawn_wandering_cyclops=true, iceandfire:spawn_sea_serpent=true, iceandfire:frost_lily=true, iceandfire:hydra_cave=true, iceandfire:lightning_lily=true, iceandfire:pixie_village=true, iceandfire:myrmex_hive_jungle=true, iceandfire:myrmex_hive_desert=true, iceandfire:silver_ore=true, iceandfire:siren_island=true, iceandfire:spawn_dragon_skeleton_ice=true, iceandfire:spawn_stymphalian_bird=true, iceandfire:fire_dragon_cave=true, iceandfire:sapphire_ore=true, iceandfire:spawn_hippocampus=true, iceandfire:spawn_death_worm=true}
+[20:44:08] [Server thread/INFO] [co.gi.al.ic.IceAndFire/]: {TROLL_S=true, HIPPOGRYPH=true, AMPHITHERE=true, COCKATRICE=true, TROLL_M=true, DREAD_LICH=true, TROLL_F=true}
+[20:44:08] [Render thread/INFO] [minecraft/LoggerChunkProgressListener]: Time elapsed: 4831 ms
+[20:44:09] [Server thread/INFO] [minecraft/IntegratedServer]: Changing view distance to 12, from 10
+[20:44:09] [Server thread/INFO] [minecraft/IntegratedServer]: Changing simulation distance to 12, from 0
+[20:44:09] [Server thread/INFO] [sp.co.ic.NecromancyDiagnostics/]: [HungryCraft/IceFireProbe] riding hook applied: EntityDragonBase#getControllingPassenger is answered by this mod too
+[20:44:09] [Server thread/INFO] [sp.co.ic.NecromancyDiagnostics/]: [HungryCraft/IceFireProbe] autonomy gate intercepted a contract dragon: isTimeToWake (EntityDragonBase)
+[20:44:09] [Server thread/INFO] [sp.co.ic.NecromancyDiagnostics/]: [HungryCraft/IceFireProbe] autonomy gate intercepted a contract dragon: updateCheckPlayer (EntityDragonBase)
+[20:44:09] [Server thread/INFO] [sp.co.ic.NecromancyDiagnostics/]: [HungryCraft/IceFireProbe] autonomy gate intercepted a contract dragon: isAllowedToTriggerFlight (EntityDragonBase)
+[20:44:09] [Server thread/INFO] [sp.co.ic.NecromancyDiagnostics/]: [HungryCraft/IceFireProbe] autonomy gate intercepted a contract dragon: IafDragonFlightManager.update
+[20:44:09] [Render thread/WARN] [io.ne.ut.in.SystemPropertyUtil/]: Unable to parse the boolean system property 'java.net.preferIPv6Addresses':system - using the default value: false
+[20:44:09] [Netty Local Client IO #0/INFO] [ne.mi.ne.NetworkHooks/]: Connected to a modded server.
+[20:44:09] [Server thread/INFO] [minecraft/PlayerList]: 111[local:E:aeab2a90] logged in with entity id 283 at (-504.01710798243323, 70.40427422799563, -431.2168600912273)
+[20:44:10] [Server thread/INFO] [minecraft/MinecraftServer]: 111加入了游戏
+[20:44:10] [Server thread/INFO] [minecraft/MinecraftServer]: 111取得了进度[龙之进化]
+[20:44:10] [Render thread/INFO] [sp.co.ic.ClientNecromancyState/]: [HungryCraft/IceFireProbe] client mirror: entity 34 revived=true mine=false stance=0 order=0 now holds 1 dragon(s)
+[20:44:10] [Render thread/INFO] [sp.co.ic.ClientNecromancyState/]: [HungryCraft/IceFireProbe] client mirror: entity 193 revived=true mine=false stance=0 order=0 now holds 2 dragon(s)
+[20:44:10] [Render thread/INFO] [minecraft/ChatComponent]: [System] [CHAT] 111取得了进度[龙之进化]
+[20:44:10] [Server thread/INFO] [minecraft/MinecraftServer]: 111取得了进度[寒冰与烈火]
+[20:44:11] [Render thread/INFO] [minecraft/ChatComponent]: [System] [CHAT] 111取得了进度[寒冰与烈火]
+[20:44:11] [Render thread/INFO] [minecraft/AdvancementList]: Loaded 33 advancements

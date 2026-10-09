@@ -1,0 +1,14 @@
+{
+  "required_level": 13,
+  "soul_cost": 500,
+  "prerequisites": [],
+  "icon": "minecraft:shulker_shell",
+  "name": "skill.spiderqueen_hungrycraft.chitin_shell",
+  "description": "skill.spiderqueen_hungrycraft.chitin_shell.desc",
+  "required_for_legend": true,
+  "layout": {
+    "anchor_level": 13,
+    "side": "left",
+    "lane": 1
+  }
+}

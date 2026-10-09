@@ -1,0 +1,63 @@
+{
+  "enabled": true,
+
+  "natural_surface": {
+    "enabled": true,
+    "dimensions": [
+      "minecraft:overworld"
+    ],
+    "attempt_interval_ticks": 20,
+    "day_spawn_chance": 0.45,
+    "night_spawn_chance": 0.15,
+    "day_target_population": 32,
+    "night_target_population": 8,
+    "min_distance_from_player": 24,
+    "max_distance_from_player": 72,
+    "per_chunk_human_cap": 1,
+    "local_radius_cap": {
+      "enabled": true,
+      "radius": 48,
+      "max_humans": 32
+    },
+    "surface_only": true,
+    "must_see_sky": true,
+    "ground_must_be_full_block": true,
+    "forbidden_ground_block_tags": [
+      "minecraft:leaves"
+    ],
+    "tier_weights": [
+      {
+        "entity": "spiderqueen_hungrycraft:low_prepared_human",
+        "weight": 60
+      },
+      {
+        "entity": "spiderqueen_hungrycraft:mid_prepared_human",
+        "weight": 30
+      },
+      {
+        "entity": "spiderqueen_hungrycraft:high_prepared_human",
+        "weight": 10
+      }
+    ],
+    "forbidden_entities": [
+      "spiderqueen_hungrycraft:chad_steve"
+    ]
+  },
+
+  "village_garrison": {
+    "enabled": true,
+    "once_per_village": true,
+    "high_prepared_human_count": {
+      "min": 2,
+      "max": 3
+    },
+    "chad_steve_count": 1,
+    "try_to_keep_one_human_per_chunk": true,
+    "spawn_chad_first": true,
+    "valid_position_rules_same_as_surface": true,
+    "check_interval_ticks": 100,
+    "chunks_checked_per_player": 4,
+    "position_search_radius": 32,
+    "village_poi_radius": 48
+  }
+}

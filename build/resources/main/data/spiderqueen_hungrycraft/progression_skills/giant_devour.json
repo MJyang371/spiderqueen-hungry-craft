@@ -1,0 +1,17 @@
+{
+  "required_level": 20,
+  "soul_cost": 1500,
+  "prerequisites": [
+    "spiderqueen_hungrycraft:queen_beast"
+  ],
+  "icon": "minecraft:fermented_spider_eye",
+  "name": "skill.spiderqueen_hungrycraft.giant_devour",
+  "description": "skill.spiderqueen_hungrycraft.giant_devour.desc",
+  "input_hint": "devour",
+  "required_for_legend": true,
+  "layout": {
+    "anchor_level": 20,
+    "side": "left",
+    "lane": 2
+  }
+}
